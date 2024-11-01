@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:Kursach"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid x:Name="MainRoot" Background="White" Margin="0,1,0,-1">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="5" Content="Авторизация" HorizontalAlignment="Left" Margin="33,43,0,0" VerticalAlignment="Top"/>
+        <DatePicker Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="123" Height="67"/>
+        <Button Grid.Column="4" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
+
     </Grid>
 </Window>
