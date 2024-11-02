@@ -1,29 +1,15 @@
-﻿<Window x:Class="BusStationApp.MainWindow"
+﻿<Window x:Class="Kursach.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Каса автовокзалу" Height="450" Width="700"
-        Background="#1F1B24">
-    <Window.Resources>
-        <FontFamily x:Key="CustomFont">Segoe UI Semibold</FontFamily>
-        <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#FF6BA5FF" Offset="0.0" />
-            <GradientStop Color="#FF1A5DFF" Offset="1.0" />
-        </LinearGradientBrush>
-    </Window.Resources>
+        Background="{StaticResource BackgroundGradient}">
     <Grid Margin="20">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Ласкаво просимо до каси автовокзалу" 
-                       FontSize="24" FontWeight="Bold" Foreground="White" 
-                       FontFamily="{StaticResource CustomFont}" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-            <Button Content="Розклад автобусів" Background="{StaticResource ButtonBackground}" Foreground="White" 
-                    FontFamily="{StaticResource CustomFont}" Width="250" Height="50" Margin="0,10"/>
-            <Button Content="Оформлення квитків" Background="{StaticResource ButtonBackground}" Foreground="White" 
-                    FontFamily="{StaticResource CustomFont}" Width="250" Height="50" Margin="0,10"/>
-            <Button Content="Авторизація" Background="{StaticResource ButtonBackground}" Foreground="White" 
-                    FontFamily="{StaticResource CustomFont}" Width="250" Height="50" Margin="0,10"/>
-            <Button Content="Реєстрація" Background="{StaticResource ButtonBackground}" Foreground="White" 
-                    FontFamily="{StaticResource CustomFont}" Width="250" Height="50" Margin="0,10"/>
+            <TextBlock Text="Ласкаво просимо до каси автовокзалу" Style="{StaticResource HeaderTextStyle}"/>
+            <Button Content="Розклад автобусів" Click="OpenScheduleWindow"/>
+            <Button Content="Оформлення квитків" Click="OpenTicketWindow"/>
+            <Button Content="Авторизація" Click="OpenLoginWindow"/>
+            <Button Content="Реєстрація" Click="OpenRegistrationWindow"/>
         </StackPanel>
     </Grid>
 </Window>
-

@@ -1,0 +1,22 @@
+﻿<Window x:Class="Kursach.ScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Розклад автобусів" Height="500" Width="800"
+        Background="{StaticResource BackgroundGradient}">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Розклад автобусів" Style="{StaticResource HeaderTextStyle}"/>
+            <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Background="White" Foreground="Black" FontFamily="Segoe UI" FontSize="14"
+                      RowBackground="#FFEBF4FF" AlternatingRowBackground="#FFD8E9FF">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№ Рейсу" Width="100" Binding="{Binding RouteNumber}"/>
+                    <DataGridTextColumn Header="Кінцевий пункт" Width="200" Binding="{Binding Destination}"/>
+                    <DataGridTextColumn Header="Проміжні пункти" Width="300" Binding="{Binding IntermediateStops}"/>
+                    <DataGridTextColumn Header="Час відправлення" Width="150" Binding="{Binding DepartureTime}"/>
+                    <DataGridTextColumn Header="Вільні місця" Width="100" Binding="{Binding AvailableSeats}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>

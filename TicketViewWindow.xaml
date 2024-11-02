@@ -1,0 +1,42 @@
+﻿<Window x:Class="Kursach.TicketViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Перегляд Квитків" Height="400" Width="600"
+        Background="{StaticResource BackgroundGradient}">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Доступні Квитки" Style="{StaticResource HeaderTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <StackPanel>
+                    <TextBlock Text="Дата:" />
+                    <TextBox Width="200" Height="30" Margin="0,0,10,0"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Напрямок:" />
+                    <TextBox Width="200" Height="30" Margin="0,0,10,0"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Тип Рейсу:" />
+                    <ComboBox Width="100" Height="30">
+                        <ComboBoxItem Content="Всі" />
+                        <ComboBoxItem Content="Регулярний" />
+                        <ComboBoxItem Content="Швидкісний" />
+                    </ComboBox>
+                </StackPanel>
+                <Button Content="Фільтрувати"/>
+            </StackPanel>
+            <ListView Name="TicketListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Номер Рейсу" Width="120" DisplayMemberBinding="{Binding FlightNumber}"/>
+                        <GridViewColumn Header="Кінцевий Пункт" Width="150" DisplayMemberBinding="{Binding Destination}"/>
+                        <GridViewColumn Header="Час Відправлення" Width="120" DisplayMemberBinding="{Binding DepartureTime}"/>
+                        <GridViewColumn Header="Вільні Місця" Width="100" DisplayMemberBinding="{Binding AvailableSeats}"/>
+                        <GridViewColumn Header="Ціна" Width="80" DisplayMemberBinding="{Binding Price}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Купити Квиток" Margin="0,10"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<Window x:Class="Kursach.TicketReturnWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Повернення Квитків" Height="350" Width="400"
+        Background="{StaticResource BackgroundGradient}">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Повернення Квитка" Style="{StaticResource HeaderTextStyle}"/>
+            <ComboBox Name="TicketComboBox" Width="300" Margin="0,10">
+                <ComboBoxItem Content="Квиток 1" />
+                <ComboBoxItem Content="Квиток 2" />
+            </ComboBox>
+            <Button Content="Повернути" Width="300"/>
+        </StackPanel>
+    </Grid>
+</Window>
