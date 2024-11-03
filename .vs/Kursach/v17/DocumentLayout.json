@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\entte\\Desktop\\Kursach\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\registrationwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:registrationwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\registrationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:registrationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,6 +47,31 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistrationWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\RegistrationWindow.xaml",
+              "RelativeDocumentMoniker": "RegistrationWindow.xaml",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\RegistrationWindow.xaml",
+              "RelativeToolTip": "RegistrationWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-03T21:55:46.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegistrationWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\RegistrationWindow.xaml.cs",
+              "RelativeDocumentMoniker": "RegistrationWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\RegistrationWindow.xaml.cs",
+              "RelativeToolTip": "RegistrationWindow.xaml.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T22:03:20.932Z",
+              "EditorCaption": ""
             }
           ]
         }

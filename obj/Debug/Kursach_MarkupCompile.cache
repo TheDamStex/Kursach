@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\entte\Desktop\Kursach\App.xaml
-1219584333
+81186896164
 
-6-502434485
-13-1310406943
-MainWindow.xaml;
+121847456778
+23611123872
+LoginWindow.xaml;MainWindow.xaml;PurchaseHistoryWindow.xaml;RegistrationWindow.xaml;ScheduleWindow.xaml;TicketReturnWindow.xaml;TicketViewWindow.xaml;TicketWindow.xaml;
 
-True
+False
 

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Kursach
 {
@@ -24,5 +11,34 @@ namespace Kursach
         {
             InitializeComponent();
         }
+
+        // Открытие окна с расписанием автобусов
+        private void OpenScheduleWindow(object sender, RoutedEventArgs e)
+        {
+            ScheduleWindow scheduleWindow = new ScheduleWindow();
+            scheduleWindow.Show();
+        }
+
+        // Открытие окна оформления билетов
+         private void OpenTicketWindow(object sender, RoutedEventArgs e)
+         {
+         TicketWindow ticketWindow = new TicketWindow();
+         ticketWindow.Show();
+         }
+
+        // Открытие окна авторизации
+        private void OpenLoginWindow(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
+
+        // Открытие окна регистрации
+        private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+        }
     }
 }
+
