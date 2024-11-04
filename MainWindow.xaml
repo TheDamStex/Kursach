@@ -4,12 +4,66 @@
         Title="Каса автовокзалу" Height="450" Width="700"
         Background="{StaticResource BackgroundGradient}">
     <Grid Margin="20">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Ласкаво просимо до каси автовокзалу" Style="{StaticResource HeaderTextStyle}"/>
-            <Button Content="Розклад автобусів" Click="OpenScheduleWindow"/>
-            <Button Content="Оформлення квитків" Click="OpenTicketWindow"/>
-            <Button Content="Авторизація" Click="OpenLoginWindow"/>
-            <Button Content="Реєстрація" Click="OpenRegistrationWindow"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Ласкаво просимо до каси автовокзалу" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,20"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button Content="Розклад автобусів" Click="OpenScheduleWindow" Width="180" Margin="10"/>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button Content="Доступні квитки" Click="OpenTicketViewWindow" Width="180" Margin="10"/>
+                <Button Content="Історія покупок" Click="OpenPurchaseHistoryWindow" Width="180" Margin="10"/>
+                <Button Content="Повернення квитка" Click="OpenTicketReturnWindow" Width="180" Margin="10"/>
+            </StackPanel>
+            <Border Margin="0,10" Height="2">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FF5B2E91" Offset="0.0"/>
+                        
+                        <GradientStop Color="#FF9B5FCE" Offset="1.0"/>
+                       
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+     
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+            <Button Content="Авторизація" Click="OpenLoginWindow" Width="180" Margin="10">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FF5B2E91" Offset="0.0"/>
+                     
+                        <GradientStop Color="#FF9B5FCE" Offset="1.0"/>
+                    
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Foreground>
+                    <SolidColorBrush Color="White"/>
+                </Button.Foreground>
+            </Button>
+            <Button Content="Реєстрація" Click="OpenRegistrationWindow" Width="180" Margin="10">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FF5B2E91" Offset="0.0"/>
+                        
+                        <GradientStop Color="#FF9B5FCE" Offset="1.0"/>
+                 
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Foreground>
+                    <SolidColorBrush Color="White"/>
+                </Button.Foreground>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

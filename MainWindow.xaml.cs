@@ -1,44 +1,52 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System;
+using System.Windows;
 
 namespace Kursach
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Purchase> purchases = new List<Purchase>();
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        // Открытие окна с расписанием автобусов
         private void OpenScheduleWindow(object sender, RoutedEventArgs e)
         {
             ScheduleWindow scheduleWindow = new ScheduleWindow();
             scheduleWindow.Show();
         }
 
-        // Открытие окна оформления билетов
-         private void OpenTicketWindow(object sender, RoutedEventArgs e)
-         {
-         TicketWindow ticketWindow = new TicketWindow();
-         ticketWindow.Show();
-         }
-
-        // Открытие окна авторизации
         private void OpenLoginWindow(object sender, RoutedEventArgs e)
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
         }
 
-        // Открытие окна регистрации
         private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
         {
             RegistrationWindow registrationWindow = new RegistrationWindow();
             registrationWindow.Show();
         }
+
+        private void OpenTicketViewWindow(object sender, RoutedEventArgs e)
+        {
+            TicketViewWindow ticketViewWindow = new TicketViewWindow(purchases);
+            ticketViewWindow.ShowDialog(); // Використовуємо ShowDialog для модального вікна
+        }
+
+        private void OpenPurchaseHistoryWindow(object sender, RoutedEventArgs e)
+        {
+            PurchaseHistoryWindow purchaseHistoryWindow = new PurchaseHistoryWindow(purchases);
+            purchaseHistoryWindow.Show();
+        }
+
+        private void OpenTicketDialogWindow()
+        {
+            var returnWindow = new TicketReturnWindow(purchases);
+            returnWindow.ShowDialog();
+        }
     }
 }
-

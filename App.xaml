@@ -11,6 +11,13 @@
             <GradientStop Color="#FF6BA5FF" Offset="0.0" />
             <GradientStop Color="#FF1A5DFF" Offset="1.0" />
         </LinearGradientBrush>
+
+        <!-- Доданий стиль для градієнтного тексту -->
+        <LinearGradientBrush x:Key="GradientTextBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#0056A6" Offset="0.0"/>
+            <GradientStop Color="#A520C6" Offset="1.0"/>
+        </LinearGradientBrush>
+
         <Style TargetType="Button">
             <Setter Property="Background" Value="{StaticResource ButtonBackground}" />
             <Setter Property="Foreground" Value="White" />
@@ -24,6 +31,13 @@
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="GradientHeaderTextStyle">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource GradientTextBrush}"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,0,0,20"/>
         </Style>

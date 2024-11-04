@@ -5,38 +5,22 @@
         Background="{StaticResource BackgroundGradient}">
     <Grid Margin="20">
         <StackPanel>
-            <TextBlock Text="Доступні Квитки" Style="{StaticResource HeaderTextStyle}"/>
-            <StackPanel Orientation="Horizontal" Margin="0,10">
-                <StackPanel>
-                    <TextBlock Text="Дата:" />
-                    <TextBox Width="200" Height="30" Margin="0,0,10,0"/>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Напрямок:" />
-                    <TextBox Width="200" Height="30" Margin="0,0,10,0"/>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Тип Рейсу:" />
-                    <ComboBox Width="100" Height="30">
-                        <ComboBoxItem Content="Всі" />
-                        <ComboBoxItem Content="Регулярний" />
-                        <ComboBoxItem Content="Швидкісний" />
-                    </ComboBox>
-                </StackPanel>
-                <Button Content="Фільтрувати"/>
-            </StackPanel>
+            <TextBlock Text="Доступні квитки" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,10"/>
             <ListView Name="TicketListView">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Номер Рейсу" Width="120" DisplayMemberBinding="{Binding FlightNumber}"/>
-                        <GridViewColumn Header="Кінцевий Пункт" Width="150" DisplayMemberBinding="{Binding Destination}"/>
-                        <GridViewColumn Header="Час Відправлення" Width="120" DisplayMemberBinding="{Binding DepartureTime}"/>
-                        <GridViewColumn Header="Вільні Місця" Width="100" DisplayMemberBinding="{Binding AvailableSeats}"/>
+                        <GridViewColumn Header="Номер рейсу" Width="120" DisplayMemberBinding="{Binding FlightNumber}"/>
+                        <GridViewColumn Header="Початковий пункт" Width="150" DisplayMemberBinding="{Binding InitialPoint}"/>
+                        <!-- Додано початковий пункт -->
+                        <GridViewColumn Header="Кінцевий пункт" Width="150" DisplayMemberBinding="{Binding FinalDestination}"/>
+                        <GridViewColumn Header="Час відправлення" Width="120" DisplayMemberBinding="{Binding DepartureTime}"/>
+                        <GridViewColumn Header="Вільні місця" Width="100" DisplayMemberBinding="{Binding FreeSeats}"/>
                         <GridViewColumn Header="Ціна" Width="80" DisplayMemberBinding="{Binding Price}"/>
+                        <!-- Ціна -->
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="Купити Квиток" Margin="0,10"/>
+            <Button Content="Купити квиток" Margin="0,10" Click="BuyTicket_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -7,10 +7,9 @@
         <StackPanel>
             <TextBlock Text="Повернення Квитка" Style="{StaticResource HeaderTextStyle}"/>
             <ComboBox Name="TicketComboBox" Width="300" Margin="0,10">
-                <ComboBoxItem Content="Квиток 1" />
-                <ComboBoxItem Content="Квиток 2" />
+              
             </ComboBox>
-            <Button Content="Повернути" Width="300"/>
+            <Button Content="Повернути" Width="300" Click="Return_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -83,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassBusScheduleItem.cs" />
+    <Compile Include="ClassFlight.cs" />
+    <Compile Include="ClassPurchase.cs" />
+    <Compile Include="ClassTicket.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -100,9 +104,6 @@
     </Compile>
     <Compile Include="TicketViewWindow.xaml.cs">
       <DependentUpon>TicketViewWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TicketWindow.xaml.cs">
-      <DependentUpon>TicketWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -138,9 +139,6 @@
     </Page>
     <Page Include="TicketViewWindow.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TicketWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -5,8 +5,8 @@
         Background="{StaticResource BackgroundGradient}">
     <Grid Margin="20">
         <StackPanel>
-            <TextBlock Text="Історія Покупок" Style="{StaticResource HeaderTextStyle}"/>
-            <ListView Name="PurchaseHistoryListView">
+            <TextBlock Text="Історія Покупок" Style="{StaticResource HeaderTextStyle}" FontSize="24"/>
+            <ListView Name="PurchaseHistoryListView" Margin="0,10">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Дата" Width="120" DisplayMemberBinding="{Binding PurchaseDate}"/>
@@ -17,7 +17,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="Повернути Квиток" Margin="0,10"/>
+            <Button Content="Повернути Квиток" Margin="0,10" Click="ReturnTicket_Click" Width="200"/>
         </StackPanel>
     </Grid>
 </Window>
