@@ -1,5 +1,5 @@
-﻿using System.IO; 
-using System.Text.Json; 
+﻿using System.IO;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Media;
 
@@ -7,52 +7,47 @@ namespace Kursach
 {
     public partial class LoginWindow : Window
     {
+        // Свойство для хранения состояния авторизации
+        public bool IsLoggedIn { get; private set; }
+
         public LoginWindow()
         {
-            InitializeComponent(); // Инициализация компонентов окна
+            InitializeComponent();
         }
 
-        // Обработчик события получения фокуса для поля логина
         private void LoginTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            // Проверка, если текст равен подсказке
             if (LoginTextBox.Text == "Логін")
             {
-                LoginTextBox.Text = ""; // Очищаем текстовое поле
-                LoginTextBox.Foreground = Brushes.Black; // Меняем цвет текста на черный
+                LoginTextBox.Text = "";
+                LoginTextBox.Foreground = Brushes.Black;
             }
         }
 
-        // Обработчик события потери фокуса для поля логина
         private void LoginTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            // Проверка, если поле пустое
             if (string.IsNullOrWhiteSpace(LoginTextBox.Text))
             {
-                LoginTextBox.Text = "Логін"; // Устанавливаем текст подсказки
-                LoginTextBox.Foreground = Brushes.Gray; // Меняем цвет текста на серый
+                LoginTextBox.Text = "Логін";
+                LoginTextBox.Foreground = Brushes.Gray;
             }
         }
 
-        // Обработчик события нажатия кнопки "Увійти"
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            // Получение данных из текстового поля и поля пароля
             string login = LoginTextBox.Text;
             string password = PasswordBox.Password;
 
-            // Проверка существования файла с данными пользователя
             if (File.Exists("user_data.json"))
             {
-                // Чтение данных из файла
                 string json = File.ReadAllText("user_data.json");
-                var user = JsonSerializer.Deserialize<User>(json); // Десериализация данных
+                var user = JsonSerializer.Deserialize<User>(json);
 
-                // Проверка правильности логина и пароля
                 if (user.Login == login && user.Password == password)
                 {
+                    IsLoggedIn = true;  // Устанавливаем флаг авторизации в true
                     MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close(); // Закрытие окна после успешной авторизации
+                    this.Close();
                 }
                 else
                 {
@@ -66,4 +61,3 @@ namespace Kursach
         }
     }
 }
-

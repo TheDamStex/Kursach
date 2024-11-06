@@ -1,35 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Kursach
 {
-    /// <summary>
-    /// Логика взаимодействия для TicketViewWindow.xaml
-    /// </summary>
     public partial class TicketViewWindow : Window
     {
         private List<Flight> flights;
+        private List<Purchase> purchases;
 
-        public TicketViewWindow()
+        public TicketViewWindow(List<Purchase> purchases)
         {
             InitializeComponent();
+            this.purchases = purchases;
             LoadFlights();
         }
 
         private void LoadFlights()
         {
-            // Додаємо рейси до списку, з "Кременчук" як початковий пункт
             flights = new List<Flight>
             {
                 new Flight { FlightNumber = "101", InitialPoint = "Кременчук", FinalDestination = "Київ", IntermediateStops = "Полтава", DepartureTime = "08:30", FreeSeats = 15, Price = 150.00m },
@@ -39,28 +27,31 @@ namespace Kursach
                 new Flight { FlightNumber = "105", InitialPoint = "Кременчук", FinalDestination = "Світловодськ", IntermediateStops = "Кропивницький", DepartureTime = "11:00", FreeSeats = 90, Price = 140.00m }
             };
 
-            // Фільтруємо рейси, щоб не було збігу початкового пункту з кінцевим
             flights.RemoveAll(flight => flight.InitialPoint == flight.FinalDestination);
-
             TicketListView.ItemsSource = flights;
         }
 
         private void BuyTicket_Click(object sender, RoutedEventArgs e)
         {
-            // Вибір рейсу з ListView
             if (TicketListView.SelectedItem is Flight selectedFlight)
             {
-                // Кількість квитків, яку хоче купити користувач
-                int ticketCount = 1; // Можна отримати з діалогового вікна або текстового поля, якщо додати таке
+                int ticketCount = 1;
 
-                // Перевірка наявності вільних місць
                 if (selectedFlight.FreeSeats >= ticketCount)
                 {
-                    // Зменшуємо кількість вільних місць
                     selectedFlight.FreeSeats -= ticketCount;
-
-                    // Оновлюємо ListView
                     TicketListView.Items.Refresh();
+
+                    var newPurchase = new Purchase
+                    {
+                        PurchaseDate = DateTime.Now,
+                        FlightNumber = selectedFlight.FlightNumber,
+                        Destination = selectedFlight.FinalDestination,
+                        Price = selectedFlight.Price,
+                        Status = "Успішно"
+                    };
+
+                    purchases.Add(newPurchase);
                     MessageBox.Show($"Ви успішно купили {ticketCount} квиток(и) на рейс {selectedFlight.FlightNumber}!", "Успіх", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
