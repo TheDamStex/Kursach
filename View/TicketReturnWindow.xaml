@@ -1,4 +1,4 @@
-﻿<Window x:Class="Kursach.TicketReturnWindow"
+﻿<Window x:Class="Kursach.View.TicketReturnWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Повернення Квитків" Height="350" Width="400"

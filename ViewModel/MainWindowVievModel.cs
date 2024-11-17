@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using Kursach.View;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
-namespace Kursach
+namespace Kursach.ViewModel
 {
-    public partial class MainWindow : Window
+    internal class MainWindowVievModel : BaseViewModel
     {
         private List<Purchase> purchases = new List<Purchase>();
         private bool isUserLoggedIn = false;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
 
         private void OpenScheduleWindow(object sender, RoutedEventArgs e)
         {
@@ -30,9 +30,6 @@ namespace Kursach
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
-
-            // Получаем состояние авторизации из окна LoginWindow после его закрытия
-            isUserLoggedIn = loginWindow.IsLoggedIn;  // Используем свойство IsLoggedIn
         }
 
         private void OpenRegistrationWindow(object sender, RoutedEventArgs e)

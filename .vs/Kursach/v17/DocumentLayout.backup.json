@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\entte\\Desktop\\Kursach\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\registrationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:registrationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\viewmodel\\mainwindowvievmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:viewmodel\\mainwindowvievmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\viewmodel\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:viewmodel\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\viewmodel\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:viewmodel\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|c:\\users\\entte\\desktop\\kursach\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DAFBBF4-3566-430F-808E-0BA889DB51D0}|Kursach.csproj|solutionrelative:viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,26 +66,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RegistrationWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\RegistrationWindow.xaml",
-              "RelativeDocumentMoniker": "RegistrationWindow.xaml",
-              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\RegistrationWindow.xaml",
-              "RelativeToolTip": "RegistrationWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-03T21:55:46.569Z",
+              "DocumentIndex": 2,
+              "Title": "RegistrationViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\RegistrationViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\RegistrationViewModel.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\RegistrationViewModel.cs",
+              "RelativeToolTip": "ViewModel\\RegistrationViewModel.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:55:32.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "ViewModel\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\RelayCommand.cs",
+              "RelativeToolTip": "ViewModel\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:52:43.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\LoginViewModel.cs",
+              "RelativeToolTip": "ViewModel\\LoginViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:52:37.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\BaseViewModel.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\BaseViewModel.cs",
+              "RelativeToolTip": "ViewModel\\BaseViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:52:33.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-03T21:53:21.084Z",
+              "Title": "MainWindowVievModel.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\MainWindowVievModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\MainWindowVievModel.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\ViewModel\\MainWindowVievModel.cs",
+              "RelativeToolTip": "ViewModel\\MainWindowVievModel.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCUAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:52:18.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\entte\\Desktop\\Kursach\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\entte\\Desktop\\Kursach\\View\\MainWindow.xaml.cs*",
+              "RelativeToolTip": "View\\MainWindow.xaml.cs*",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAmwFAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T21:43:16.026Z",
               "EditorCaption": ""
             }
           ]

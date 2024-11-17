@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 
-namespace Kursach
+namespace Kursach.View
 {
     public partial class PurchaseHistoryWindow : Window
     {
