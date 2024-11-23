@@ -6,7 +6,7 @@
     <Grid Margin="20">
         <StackPanel VerticalAlignment="Top">
             <TextBlock Text="Розклад автобусів" Style="{StaticResource HeaderTextStyle}" FontSize="28" 
-                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                       HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="Arial Black"/>
             <DataGrid x:Name="BusScheduleDataGrid" AutoGenerateColumns="False" Background="White" 
                       Foreground="Black" FontFamily="Segoe UI" FontSize="14"
                       RowBackground="#FFEBF4FF" AlternatingRowBackground="#FFD8E9FF" 

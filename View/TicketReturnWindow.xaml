@@ -5,11 +5,11 @@
         Background="{StaticResource BackgroundGradient}">
     <Grid Margin="20">
         <StackPanel>
-            <TextBlock Text="Повернення Квитка" Style="{StaticResource HeaderTextStyle}"/>
+            <TextBlock Text="Повернення квитка" Style="{StaticResource HeaderTextStyle}" FontFamily="Arial Black"/>
             <ComboBox Name="TicketComboBox" Width="300" Margin="0,10">
-              
+
             </ComboBox>
-            <Button Content="Повернути" Width="300" Click="Return_Click"/>
+            <Button Content="Повернути" Width="176" Click="Return_Click" FontFamily="Arial Black" Height="37"/>
         </StackPanel>
     </Grid>
 </Window>
