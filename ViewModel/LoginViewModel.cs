@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Kursach.Model;
+using Kursach.Services;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
-using Kursach.Model;
 
 namespace Kursach.ViewModel
 {
@@ -11,16 +13,21 @@ namespace Kursach.ViewModel
     {
         private string _login;
         private string _password;
-        private bool _isLoggedIn;
+        private readonly AuthService _authService;
 
-        // Свойства
-        public string UserLogin // Переименовал свойство, чтобы избежать конфликта
+        public LoginViewModel(AuthService authService)
+        {
+            _authService = authService;
+            LoginCommand = new RelayCommand(Login, CanLogin);
+        }
+
+        public string UserLogin
         {
             get => _login;
             set
             {
                 _login = value;
-                OnPropertyChanged(nameof(UserLogin)); // Исправил на новое имя свойства
+                OnPropertyChanged(nameof(UserLogin));
                 UpdateCanLogin();
             }
         }
@@ -36,63 +43,41 @@ namespace Kursach.ViewModel
             }
         }
 
-        public bool IsLoggedIn
-        {
-            get => _isLoggedIn;
-            private set
-            {
-                _isLoggedIn = value;
-                OnPropertyChanged(nameof(IsLoggedIn));
-            }
-        }
-
-        // Команда для логина
         public ICommand LoginCommand { get; }
 
-        public LoginViewModel()
-        {
-            // Инициализация команды с указанием метода и условия выполнения
-            LoginCommand = new RelayCommand(Login, CanLogin);
-        }
+        private bool CanLogin() =>
+            !string.IsNullOrWhiteSpace(UserLogin) && !string.IsNullOrWhiteSpace(Password);
 
-        // Метод для проверки, можно ли выполнить логин
-        private bool CanLogin()
-        {
-            return !string.IsNullOrWhiteSpace(UserLogin) && !string.IsNullOrWhiteSpace(Password);
-        }
-
-        // Обновляем состояние команды логина
         private void UpdateCanLogin()
         {
             (LoginCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
 
-        // Метод для выполнения логина
         private void Login()
         {
             try
             {
                 if (File.Exists("user_data.json"))
                 {
-                    // Чтение данных пользователя
                     string json = File.ReadAllText("user_data.json");
-                    var user = JsonSerializer.Deserialize<User>(json);
+                    var users = JsonSerializer.Deserialize<List<User>>(json);
 
-                    if (user == null)
+                    if (users != null)
                     {
-                        MessageBox.Show("Ошибка данных пользователя!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-
-                    // Проверка логина и пароля
-                    if (user.Login == this.UserLogin && user.Password == this.Password) // Используем переименованное свойство
-                    {
-                        IsLoggedIn = true;
-                        MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                        var user = users.Find(u => u.Login == UserLogin && u.Password == Password);
+                        if (user != null)
+                        {
+                            _authService.IsLoggedIn = true;
+                            MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Пользователь не зарегистрирован!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
@@ -105,5 +90,6 @@ namespace Kursach.ViewModel
                 MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
     }
 }

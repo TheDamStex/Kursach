@@ -1,23 +1,43 @@
-﻿using Kursach.View;
-using System;
+﻿using Kursach.Services;
+using Kursach.View;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows;
 
 namespace Kursach.ViewModel
 {
-    internal class MainWindowVievModel : BaseViewModel
+    public class MainWindowVievModel : BaseViewModel
     {
-        private List<Purchase> purchases = new List<Purchase>();
-        private bool isUserLoggedIn = false;
+        private readonly AuthService _authService;
+        private List<Purchase> _purchases;
 
-        private void OpenScheduleWindow(object sender, RoutedEventArgs e)
+        public MainWindowVievModel(AuthService authService)
         {
-            if (isUserLoggedIn)
+            _authService = authService;
+            _purchases = new List<Purchase>();
+
+            // Инициализация команд
+            OpenScheduleWindowCommand = new RelayCommand(OpenScheduleWindow);
+            OpenTicketViewWindowCommand = new RelayCommand(OpenTicketViewWindow);
+            OpenPurchaseHistoryWindowCommand = new RelayCommand(OpenPurchaseHistoryWindow);
+            OpenTicketReturnWindowCommand = new RelayCommand(OpenTicketReturnWindow);
+            OpenLoginWindowCommand = new RelayCommand(OpenLoginWindow);
+            OpenRegistrationWindowCommand = new RelayCommand(OpenRegistrationWindow);
+        }
+
+        // Свойства для команд
+        public ICommand OpenScheduleWindowCommand { get; }
+        public ICommand OpenTicketViewWindowCommand { get; }
+        public ICommand OpenPurchaseHistoryWindowCommand { get; }
+        public ICommand OpenTicketReturnWindowCommand { get; }
+        public ICommand OpenLoginWindowCommand { get; }
+        public ICommand OpenRegistrationWindowCommand { get; }
+
+        public void OpenScheduleWindow()
+        {
+            if (_authService.IsLoggedIn)
             {
-                ScheduleWindow scheduleWindow = new ScheduleWindow();
+                var scheduleWindow = new ScheduleWindow();
                 scheduleWindow.Show();
             }
             else
@@ -26,24 +46,12 @@ namespace Kursach.ViewModel
             }
         }
 
-        private void OpenLoginWindow(object sender, RoutedEventArgs e)
+        public void OpenTicketViewWindow()
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();
-        }
-
-        private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
-        {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.ShowDialog();
-        }
-
-        private void OpenTicketViewWindow(object sender, RoutedEventArgs e)
-        {
-            if (isUserLoggedIn)
+            if (_authService.IsLoggedIn)
             {
-                TicketViewWindow ticketViewWindow = new TicketViewWindow(purchases);
-                ticketViewWindow.ShowDialog();
+                var ticketViewWindow = new TicketViewWindow(_purchases);
+                ticketViewWindow.Show();
             }
             else
             {
@@ -51,11 +59,11 @@ namespace Kursach.ViewModel
             }
         }
 
-        private void OpenPurchaseHistoryWindow(object sender, RoutedEventArgs e)
+        public void OpenPurchaseHistoryWindow()
         {
-            if (isUserLoggedIn)
+            if (_authService.IsLoggedIn)
             {
-                PurchaseHistoryWindow purchaseHistoryWindow = new PurchaseHistoryWindow(purchases);
+                var purchaseHistoryWindow = new PurchaseHistoryWindow(_purchases);
                 purchaseHistoryWindow.Show();
             }
             else
@@ -64,17 +72,29 @@ namespace Kursach.ViewModel
             }
         }
 
-        private void OpenTicketReturnWindow(object sender, RoutedEventArgs e)
+        public void OpenTicketReturnWindow()
         {
-            if (isUserLoggedIn)
+            if (_authService.IsLoggedIn)
             {
-                TicketReturnWindow returnWindow = new TicketReturnWindow(purchases);
-                returnWindow.ShowDialog();
+                var ticketReturnWindow = new TicketReturnWindow(_purchases);
+                ticketReturnWindow.Show();
             }
             else
             {
                 MessageBox.Show("Пожалуйста, авторизуйтесь для возврата билета.", "Доступ ограничен", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        public void OpenLoginWindow()
+        {
+            var loginWindow = new LoginWindow(_authService);
+            loginWindow.Show();
+        }
+
+        public void OpenRegistrationWindow()
+        {
+            var registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
         }
     }
 }

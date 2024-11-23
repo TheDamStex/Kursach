@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
 using Kursach.Model;
-
+using System.Collections.Generic;
 
 namespace Kursach.ViewModel
 {
@@ -57,7 +57,6 @@ namespace Kursach.ViewModel
             }
         }
 
-
         public ICommand RegisterCommand { get; }
 
         public RegistrationViewModel()
@@ -75,10 +74,24 @@ namespace Kursach.ViewModel
 
         private void Register()
         {
-            // Сохранение данных пользователя
-            var user = new User { Login = Login, Password = Password };
-            string json = JsonSerializer.Serialize(user);
-            File.WriteAllText("user_data.json", json);
+            // Чтение существующих данных пользователей
+            List<User> users = new List<User>();
+            if (File.Exists("user_data.json"))
+            {
+                string existingData = File.ReadAllText("user_data.json");
+                if (!string.IsNullOrWhiteSpace(existingData))
+                {
+                    users = JsonSerializer.Deserialize<List<User>>(existingData);
+                }
+            }
+
+            // Добавление нового пользователя
+            var newUser = new User { Login = Login, Password = Password };
+            users.Add(newUser);
+
+            // Сериализация и запись обратно в файл
+            string updatedJson = JsonSerializer.Serialize(users);
+            File.WriteAllText("user_data.json", updatedJson);
 
             MessageBox.Show("Регистрация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }

@@ -1,8 +1,12 @@
 ﻿<Window x:Class="Kursach.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
         Title="Каса автовокзалу" Height="450" Width="700"
-        Background="{StaticResource BackgroundGradient}">
+        Background="{StaticResource BackgroundGradient}"
+        DataContext="{Binding MainWindowVievModel}">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,13 +20,12 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Розклад автобусів" Click="OpenScheduleWindow" Width="180" Margin="10"/>
+                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Width="180" Margin="10"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Доступні квитки" Click="OpenTicketViewWindow" Width="180" Margin="10"/>
-                <Button Content="Історія покупок" Click="OpenPurchaseHistoryWindow" Width="180" Margin="10"/>
-                <!-- Правильный обработчик для кнопки Повернення квитка -->
-                <Button Content="Повернення квитка" Click="OpenTicketReturnWindow" Width="180" Margin="10"/>
+                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Width="180" Margin="10"/>
+                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Width="180" Margin="10"/>
+                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Width="180" Margin="10"/>
             </StackPanel>
             <Border Margin="0,10" Height="2">
                 <Border.Background>
@@ -35,7 +38,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <Button Content="Авторизація" Click="OpenLoginWindow" Width="180" Margin="10">
+            <Button Content="Авторизація" Command="{Binding OpenLoginWindowCommand}" Width="180" Margin="10">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
@@ -46,7 +49,7 @@
                     <SolidColorBrush Color="White"/>
                 </Button.Foreground>
             </Button>
-            <Button Content="Реєстрація" Click="OpenRegistrationWindow" Width="180" Margin="10">
+            <Button Content="Реєстрація" Command="{Binding OpenRegistrationWindowCommand}" Width="180" Margin="10">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
