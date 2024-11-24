@@ -18,38 +18,39 @@
             <TextBlock Text="Реєстрація" Style="{StaticResource HeaderTextStyle}" FontFamily="Arial Black" />
 
             <Grid>
-                <TextBox x:Name="NameTextBox"
-                         Width="250" Height="40" Margin="0,10"
+                <TextBox Width="250" Height="40" Margin="0,10"
                          FontFamily="Segoe UI" Background="White" Foreground="Black"
                          VerticalContentAlignment="Center" 
-                         Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
+                         Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Введіть ім'я" Foreground="Gray" VerticalAlignment="Center"
                            HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Логин -->
             <Grid>
-                <TextBox x:Name="LoginTextBox"
-                         Width="250" Height="40" Margin="0,10"
-                         FontFamily="Segoe UI" Background="White" Foreground="Black"
-                         VerticalContentAlignment="Center" 
-                         Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBlock Text="Введіть логін" Foreground="Gray" VerticalAlignment="Center"
+                <PasswordBox x:Name="PasswordBox1" 
+                             Width="250" Height="40" Margin="0,10" 
+                             FontFamily="Segoe UI" Background="White" Foreground="Black"
+                             VerticalContentAlignment="Center"
+                             PasswordChanged="PasswordBox1_PasswordChanged" />
+                <TextBlock Text="Введіть пароль" Foreground="Gray" VerticalAlignment="Center"
                            HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Пароль -->
             <Grid>
-                <PasswordBox x:Name="PasswordBox" 
+                <PasswordBox x:Name="PasswordBox2" 
                              Width="250" Height="40" Margin="0,10" 
                              FontFamily="Segoe UI" Background="White" Foreground="Black"
-                             VerticalContentAlignment="Center" />
+                             VerticalContentAlignment="Center" 
+                             PasswordChanged="PasswordBox2_PasswordChanged"/>
                 <TextBlock Text="Введіть пароль" Foreground="Gray" VerticalAlignment="Center"
                            HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Кнопка регистрации -->
-            <Button Content="Зареєструватися" Width="195" Height="40" Margin="0,20" FontFamily="Arial Black" />
+            <Button Content="Зареєструватися" Command="{Binding RegisterCommand}" 
+        IsEnabled="{Binding CanRegister}" Width="195" Height="40" Margin="0,20" FontFamily="Arial Black" />
         </StackPanel>
     </Grid>
 </Window>

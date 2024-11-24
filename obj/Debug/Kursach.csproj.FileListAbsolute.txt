@@ -142,3 +142,5 @@ D:\KURSACHH\obj\Debug\Kursach.exe
 D:\KURSACHH\obj\Debug\Kursach.pdb
 D:\KURSACHH\obj\Debug\View\PaymentWindow.g.cs
 D:\KURSACHH\obj\Debug\View\PaymentWindow.baml
+C:\Users\entte\Desktop\Kursach\obj\Debug\View\PaymentWindow.g.cs
+C:\Users\entte\Desktop\Kursach\obj\Debug\View\PaymentWindow.baml

@@ -10,6 +10,8 @@ public class RelayCommand : ICommand
     {
         this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
         this.canExecute = canExecute;
+
+
     }
 
     public bool CanExecute(object parameter)

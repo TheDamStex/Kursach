@@ -131,13 +131,14 @@
                      Text="{Binding ExpiryDate, UpdateSourceTrigger=PropertyChanged}"/>
 
             <!-- Поле для CVV -->
-            <PasswordBox Style="{StaticResource WatermarkedPasswordBoxStyle}" 
+            <PasswordBox Style="{StaticResource WatermarkedPasswordBoxStyle}"
                          Tag="CVV"
                          Width="350"
-                         Password="{Binding CVV, UpdateSourceTrigger=PropertyChanged}"/>
+                         PasswordChanged="PasswordBox_PasswordChanged"/>
+
 
             <!-- Кнопка оплаты -->
-            <Button Content="Сплатити" Style="{StaticResource ButtonBackground}" Command="{Binding PayCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" BorderBrush="Transparent" BorderThickness="1" FontSize="16" FontFamily="Arial Black" Foreground="White" Margin="0,10">
+            <Button Content="Сплатити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding PayCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" BorderBrush="Transparent" BorderThickness="1" FontSize="16" FontFamily="Arial Black" Foreground="White" Margin="0,10">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">

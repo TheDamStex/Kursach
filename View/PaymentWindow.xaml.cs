@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Kursach.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Kursach.View
 {
-    /// <summary>
-    /// Логика взаимодействия для PaymentWindow.xaml
-    /// </summary>
     public partial class PaymentWindow : Window
     {
         public PaymentWindow()
         {
             InitializeComponent();
+            DataContext = new PaymentViewModel();
         }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is PaymentViewModel viewModel)
+            {
+                viewModel.CVV = ((PasswordBox)sender).Password;
+            }
+        }
+
+
     }
 }
