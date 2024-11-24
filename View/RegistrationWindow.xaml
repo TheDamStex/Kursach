@@ -12,45 +12,132 @@
         <vm:RegistrationViewModel />
     </Window.DataContext>
 
+    <Window.Resources>
+        <!-- Стиль для кнопки с закругленными углами и наведением -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Width" Value="195"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,20"/>
+            <Setter Property="Background" Value="#FF5B2E91"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Content="{TemplateBinding Content}"
+                                             ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF9B5FCE"/>
+                    <Setter Property="BorderBrush" Value="#FF5B2E91"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для TextBox с наведением и закругленными углами -->
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="#FF5B2E91"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
+                    <Setter Property="Background" Value="#FFFAF0F0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для PasswordBox с наведением и закругленными углами -->
+        <Style x:Key="RoundedPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="#FF5B2E91"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
+                    <Setter Property="Background" Value="#FFFAF0F0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="20">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <!-- Заголовок -->
             <TextBlock Text="Реєстрація" Style="{StaticResource HeaderTextStyle}" FontFamily="Arial Black" />
 
-            <Grid>
-                <TextBox Width="250" Height="40" Margin="0,10"
-                         FontFamily="Segoe UI" Background="White" Foreground="Black"
-                         VerticalContentAlignment="Center" 
-                         Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Введіть ім'я" Foreground="Gray" VerticalAlignment="Center"
-                           HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
-            </Grid>
-
             <!-- Логин -->
             <Grid>
-                <PasswordBox x:Name="PasswordBox1" 
-                             Width="250" Height="40" Margin="0,10" 
+                <Border BorderBrush="#FF5B2E91" BorderThickness="1" CornerRadius="15">
+                    <TextBox Width="250" Height="40" Margin="0,10"
                              FontFamily="Segoe UI" Background="White" Foreground="Black"
-                             VerticalContentAlignment="Center"
-                             PasswordChanged="PasswordBox1_PasswordChanged" />
-                <TextBlock Text="Введіть пароль" Foreground="Gray" VerticalAlignment="Center"
+                             VerticalContentAlignment="Center" 
+                             Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                             Style="{StaticResource RoundedTextBoxStyle}"/>
+                </Border>
+                <TextBlock Name="LoginHint" Text="Введіть логін" Foreground="Gray" VerticalAlignment="Center"
                            HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Пароль -->
             <Grid>
-                <PasswordBox x:Name="PasswordBox2" 
-                             Width="250" Height="40" Margin="0,10" 
-                             FontFamily="Segoe UI" Background="White" Foreground="Black"
-                             VerticalContentAlignment="Center" 
-                             PasswordChanged="PasswordBox2_PasswordChanged"/>
-                <TextBlock Text="Введіть пароль" Foreground="Gray" VerticalAlignment="Center"
+                <Border BorderBrush="#FF5B2E91" BorderThickness="1" CornerRadius="15">
+                    <PasswordBox x:Name="PasswordBox1" 
+                                 Width="250" Height="40" Margin="0,10" 
+                                 FontFamily="Segoe UI" Background="White" Foreground="Black"
+                                 VerticalContentAlignment="Center"
+                                 PasswordChanged="PasswordBox1_PasswordChanged" 
+                                 GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"
+                                 Style="{StaticResource RoundedPasswordBoxStyle}" />
+                </Border>
+                <TextBlock Name="PasswordHint1" Text="Введіть пароль" Foreground="Gray" VerticalAlignment="Center"
+                           HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
+            </Grid>
+
+            <!-- Подтверждение пароля -->
+            <Grid>
+                <Border BorderBrush="#FF5B2E91" BorderThickness="1" CornerRadius="15">
+                    <PasswordBox x:Name="PasswordBox2" 
+                                 Width="250" Height="40" Margin="0,10" 
+                                 FontFamily="Segoe UI" Background="White" Foreground="Black"
+                                 VerticalContentAlignment="Center" 
+                                 PasswordChanged="PasswordBox2_PasswordChanged"
+                                 GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"
+                                 Style="{StaticResource RoundedPasswordBoxStyle}" />
+                </Border>
+                <TextBlock Name="PasswordHint2" Text="Підтвердіть пароль" Foreground="Gray" VerticalAlignment="Center"
                            HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Кнопка регистрации -->
             <Button Content="Зареєструватися" Command="{Binding RegisterCommand}" 
-        IsEnabled="{Binding CanRegister}" Width="195" Height="40" Margin="0,20" FontFamily="Arial Black" />
+                    IsEnabled="{Binding CanRegister}" Width="195" Height="40" Margin="0,20" FontFamily="Arial Black"
+                    Style="{StaticResource RoundedButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Window>

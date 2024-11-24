@@ -7,6 +7,44 @@
         Title="Каса автовокзалу" Height="450" Width="700"
         Background="{StaticResource BackgroundGradient}"
         DataContext="{Binding MainWindowVievModel}">
+    <Window.Resources>
+        <!-- Стиль для кнопок с закругленными углами -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="#FF5B2E91"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <!-- Изменяем шаблон кнопки для закругления углов -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Content="{TemplateBinding Content}"
+                                             ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- Добавляем поведение при наведении (MouseOver) -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF9B5FCE"/>
+                    <Setter Property="BorderBrush" Value="#FF5B2E91"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,12 +58,12 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Width="191" Margin="10" FontFamily="Arial Black"/>
+                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Width="180" Margin="10" FontFamily="Arial Black"/>
-                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Width="180" Margin="10" FontFamily="Arial Black"/>
-                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Width="194" Margin="10" FontFamily="Arial Black"/>
+                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
             </StackPanel>
             <Border Margin="0,10" Height="2">
                 <Border.Background>
@@ -38,7 +76,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <Button Content="Авторизація" Command="{Binding OpenLoginWindowCommand}" Width="180" Margin="10" FontFamily="Arial Black">
+            <Button Content="Авторизація" Command="{Binding OpenLoginWindowCommand}" Style="{StaticResource RoundedButtonStyle}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
@@ -49,7 +87,7 @@
                     <SolidColorBrush Color="White"/>
                 </Button.Foreground>
             </Button>
-            <Button Content="Реєстрація" Command="{Binding OpenRegistrationWindowCommand}" Width="180" Margin="10" FontFamily="Arial Black">
+            <Button Content="Реєстрація" Command="{Binding OpenRegistrationWindowCommand}" Style="{StaticResource RoundedButtonStyle}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
