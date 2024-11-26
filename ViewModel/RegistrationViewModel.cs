@@ -61,14 +61,21 @@ namespace Kursach.ViewModel
 
         public RegistrationViewModel()
         {
-            RegisterCommand = new RelayCommand(Register, () => CanRegister);
+            RegisterCommand = new RelayCommand(Register, CanRegisterUser);
+        }
+        private bool CanRegisterUser()
+        {
+            // Перевірка, чи всі поля заповнені та паролі збігаються
+            return !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && Password == ConfirmPassword;
         }
 
         private void UpdateCanRegister()
         {
             CanRegister = !string.IsNullOrWhiteSpace(Login) &&
-                          !string.IsNullOrWhiteSpace(Password) &&
-                          Password == ConfirmPassword;
+                  !string.IsNullOrWhiteSpace(Password) &&
+                  Password == ConfirmPassword;
+
+            // Оновлюємо команду
             (RegisterCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
 
@@ -93,7 +100,14 @@ namespace Kursach.ViewModel
             string updatedJson = JsonSerializer.Serialize(users);
             File.WriteAllText("user_data.json", updatedJson);
 
+            // Очищаем поля после успешной регистрации
+            Login = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+
+            // Выводим сообщение об успешной регистрации
             MessageBox.Show("Регистрация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
     }
 }

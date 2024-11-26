@@ -3,9 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Історія Покупок" Height="400" Width="620"
         Background="{StaticResource BackgroundGradient}">
-    <Grid Margin="20">
+    <Window.Resources>
+        <!-- Стиль для фону -->
+        <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="White" Offset="0" />
+            <GradientStop Color="#002366" Offset="1" />
+        </LinearGradientBrush>
+
+        <!-- Анімація для фону -->
+        <ColorAnimation x:Key="BackgroundColorAnimation"
+                Duration="0:0:2"
+                From="White"
+                To="#002366"
+                AutoReverse="True"
+                RepeatBehavior="Forever" />
+        <Storyboard x:Key="GradientAnimation">
+            <ColorAnimation 
+                Storyboard.TargetName="GradientStop1" 
+                Storyboard.TargetProperty="Color"
+                From="White" To="DarkBlue" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever"/>
+            <ColorAnimation 
+                Storyboard.TargetName="GradientStop2" 
+                Storyboard.TargetProperty="Color"
+                From="DarkBlue" To="White" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid Margin="0,0,39,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
-            <TextBlock Text="Історія покупок" Style="{StaticResource HeaderTextStyle}" FontSize="24" FontFamily="Arial Black"/>
+            <TextBlock Text="Історія покупок" Style="{StaticResource HeaderTextStyle}" FontSize="24" FontFamily="Arial Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
+                        <!-- Білий -->
+                        <GradientStop x:Name="GradientStop2" Color="DarkBlue" Offset="1.0"/>
+                        <!-- Темно-синій -->
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+
             <ListView Name="PurchaseHistoryListView" Margin="0,10" FontFamily="Arial Black"
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView.Background>

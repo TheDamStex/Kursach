@@ -8,6 +8,17 @@
         Background="{StaticResource BackgroundGradient}"
         DataContext="{Binding MainWindowVievModel}">
     <Window.Resources>
+        <ColorAnimation x:Key="ColorAnimation"
+                Duration="0:0:2"
+                From="White"
+                To="#002366"
+                AutoReverse="True"
+                RepeatBehavior="Forever" />
+
+        <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="White" Offset="0" />
+            <GradientStop Color="#002366" Offset="1" />
+        </LinearGradientBrush>
         <!-- Стиль для кнопок с закругленными углами -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
             <Setter Property="FontFamily" Value="Arial Black"/>
@@ -45,7 +56,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid Margin="20">
+    <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -53,7 +64,43 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-            <TextBlock Text="Ласкаво просимо до каси автовокзалу" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,20" FontFamily="Arial Black"/>
+
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                            <!-- Анімація першого градіентного кольору -->
+                            <DoubleAnimation Storyboard.TargetName="GradientStop1"
+                                     Storyboard.TargetProperty="Offset"
+                                     From="0.0" To="1.0" Duration="0:0:3"/>
+                            <!-- Анімація другого градіентного кольору -->
+                            <DoubleAnimation Storyboard.TargetName="GradientStop2"
+                                     Storyboard.TargetProperty="Offset"
+                                     From="0.5" To="1.5" Duration="0:0:3"/>
+                            <!-- Анімація третього градіентного кольору -->
+                            <DoubleAnimation Storyboard.TargetName="GradientStop3"
+                                     Storyboard.TargetProperty="Offset"
+                                     From="1.0" To="2.0" Duration="0:0:3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+            <TextBlock x:Name="AnimatedTextBlock"
+               FontFamily="Arial Black"
+               Text="BusBuy"
+               FontSize="34"
+               >
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0.0" Color="White" x:Name="GradientStop1"/>
+                        <!-- Білий -->
+                        <!-- Білий -->
+                        <GradientStop Offset="0.5" Color="#00008B" x:Name="GradientStop2"/>
+                        <!-- Темно-синій -->
+                        <GradientStop Offset="1.0" Color="White" x:Name="GradientStop3"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">

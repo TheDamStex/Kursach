@@ -3,40 +3,93 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Розклад автобусів" Height="600" Width="1450"
         Background="{StaticResource BackgroundGradient}">
-    <Grid Margin="20">
+    <Window.Resources>
+        <!-- Стиль для фону -->
+        <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="White" Offset="0" />
+            <GradientStop Color="#002366" Offset="1" />
+        </LinearGradientBrush>
+
+        <!-- Анімація для фону -->
+        <ColorAnimation x:Key="BackgroundColorAnimation"
+                Duration="0:0:2"
+                From="White"
+                To="#002366"
+                AutoReverse="True"
+                RepeatBehavior="Forever" />
+        <Storyboard x:Key="GradientAnimation">
+            <ColorAnimation 
+                Storyboard.TargetName="GradientStop1" 
+                Storyboard.TargetProperty="Color"
+                From="White" To="DarkBlue" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever"/>
+            <ColorAnimation 
+                Storyboard.TargetName="GradientStop2" 
+                Storyboard.TargetProperty="Color"
+                From="DarkBlue" To="White" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+
+        <!-- Стиль для закругленої кнопки -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#6A0DAD"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="171"/>
+            <Setter Property="Height" Value="37"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="20">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel VerticalAlignment="Top">
             <TextBlock Text="Розклад автобусів" Style="{StaticResource HeaderTextStyle}" FontSize="28" 
-                       HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="Arial Black"/>
-            <DataGrid x:Name="BusScheduleDataGrid" AutoGenerateColumns="False" Background="White" 
-                      Foreground="Black" FontFamily="Segoe UI" FontSize="14"
-                      RowBackground="#FFEBF4FF" AlternatingRowBackground="#FFD8E9FF" 
-                      CanUserResizeColumns="True" CanUserAddRows="False">
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#007ACC" Offset="0.0"/>
-                                    <GradientStop Color="#00BFFF" Offset="1.0"/>
-                                </LinearGradientBrush>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="Padding" Value="10"/>
-                    </Style>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="№ Рейсу" Binding="{Binding FlightNumber}" Width="150"/>
-                    <DataGridTextColumn Header="Початковий пункт" Binding="{Binding InitialPoint}" Width="200"/>
-                    <DataGridTextColumn Header="Кінцевий пункт" Binding="{Binding FinalDestination}" Width="300"/>
-                    <DataGridTextColumn Header="Проміжні пункти" Binding="{Binding IntermediateStops}" Width="250"/>
-                    <DataGridTextColumn Header="Час відправлення" Binding="{Binding DepartureTime}" Width="150"/>
-                    <DataGridTextColumn Header="Вільні місця" Binding="{Binding FreeSeats}" Width="200"/>
-                    <DataGridTextColumn Header="Ціна" Binding="{Binding Price}" Width="150"/>
-                </DataGrid.Columns>
-            </DataGrid>
+                       HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="Arial Black">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
+                        <!-- Білий -->
+                        <GradientStop x:Name="GradientStop2" Color="DarkBlue" Offset="1.0"/>
+                        <!-- Темно-синій -->
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+
+            <ListView Name="BusScheduleListView" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ListView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#800080" Offset="0.0"/>
+                        <!-- Фіолетовий -->
+                        <GradientStop Color="#ADD8E6" Offset="1.0"/>
+                        <!-- Голубий -->
+                    </LinearGradientBrush>
+                </ListView.Background>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="№ Рейсу" Width="150" DisplayMemberBinding="{Binding FlightNumber}"/>
+                        <GridViewColumn Header="Початковий пункт" Width="200" DisplayMemberBinding="{Binding InitialPoint}"/>
+                        <GridViewColumn Header="Кінцевий пункт" Width="300" DisplayMemberBinding="{Binding FinalDestination}"/>
+                        <GridViewColumn Header="Проміжні пункти" Width="250" DisplayMemberBinding="{Binding IntermediateStops}"/>
+                        <GridViewColumn Header="Час відправлення" Width="150" DisplayMemberBinding="{Binding DepartureTime}"/>
+                        <GridViewColumn Header="Вільні місця" Width="200" DisplayMemberBinding="{Binding FreeSeats}"/>
+                        <GridViewColumn Header="Ціна" Width="150" DisplayMemberBinding="{Binding Price}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
     </Grid>
 </Window>

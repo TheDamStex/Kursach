@@ -27,6 +27,7 @@
             <Setter Property="Height" Value="50" />
             <Setter Property="Margin" Value="0,10" />
         </Style>
+
         <Style TargetType="TextBlock" x:Key="HeaderTextStyle">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -34,12 +35,46 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,0,0,20"/>
         </Style>
+
         <Style TargetType="TextBlock" x:Key="GradientHeaderTextStyle">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="{StaticResource GradientTextBrush}"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+
+        <!-- Стиль для ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#ADD8E6" Offset="0.0"/>
+                        <!-- Світло-блакитний -->
+                        <GradientStop Color="#6A0DAD" Offset="0.5"/>
+                        <!-- Темно-фіолетовий -->
+                        <GradientStop Color="#FFB6C1" Offset="1.0"/>
+                        <!-- Світло-рожевий -->
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <!-- Стиль для елементів ComboBox -->
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="FontFamily" Value="Segoe UI"/>
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

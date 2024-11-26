@@ -32,7 +32,7 @@ namespace Kursach.View
                 new { FlightNumber = "105", InitialPoint = "Кременчук", FinalDestination = "Світловодськ", IntermediateStops = "Кропивницький", DepartureTime = "11:00", FreeSeats = 8, Price = 110 }
             };
 
-            BusScheduleDataGrid.ItemsSource = busSchedules; // Прив'язуємо дані до DataGrid
+            BusScheduleListView.ItemsSource = busSchedules; // Прив'язуємо дані до listview
         }
     }
 }

@@ -5,6 +5,20 @@
         Background="{StaticResource BackgroundGradient}">
 
     <Window.Resources>
+        <!-- Стиль для фону -->
+        <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="White" Offset="0" />
+            <GradientStop Color="#002366" Offset="1" />
+        </LinearGradientBrush>
+
+        <!-- Анімація для фону -->
+        <ColorAnimation x:Key="BackgroundColorAnimation"
+                Duration="0:0:2"
+                From="White"
+                To="#002366"
+                AutoReverse="True"
+                RepeatBehavior="Forever" />
+        
         <!-- Стиль для TextBox с закругленными углами -->
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
             <Setter Property="Width" Value="250"/>
@@ -16,6 +30,18 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="BorderBrush" Value="#FF5B2E91"/>
             <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
@@ -35,6 +61,18 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="BorderBrush" Value="#FF5B2E91"/>
             <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
@@ -76,39 +114,48 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Анимация для текста "Авторизація" -->
+        <Storyboard x:Key="TextColorAnimation">
+            <ColorAnimation 
+                Storyboard.TargetName="HeaderTextBlock" 
+                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" 
+                From="White" To="DarkBlue" 
+                AutoReverse="True" RepeatBehavior="Forever" Duration="0:0:1"/>
+        </Storyboard>
     </Window.Resources>
 
-    <Grid Margin="20">
+    <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Авторизація" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,20" FontFamily="Arial Black"/>
+            <TextBlock x:Name="HeaderTextBlock" Text="Login" 
+                       Style="{StaticResource HeaderTextStyle}" 
+                       Margin="0,0,0,20" FontFamily="Arial Black" 
+                       Loaded="HeaderTextBlock_Loaded"/>
+
 
             <!-- Логин -->
             <Grid>
-                <Border BorderBrush="#FF5B2E91" BorderThickness="1" CornerRadius="15">
-                    <TextBox x:Name="LoginTextBox"
-                             Width="250" Height="40" Margin="0,10"
-                             FontFamily="Segoe UI" Background="White" Foreground="Black"
-                             VerticalContentAlignment="Center" 
-                             Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
-                             Style="{StaticResource RoundedTextBoxStyle}"/>
-                </Border>
-                <TextBlock Name="LoginHint" Text="Введіть логін" Foreground="Gray" VerticalAlignment="Center"
-                           HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
+                <TextBox x:Name="LoginTextBox"
+             Width="250" Height="40" Margin="0,10"
+             FontFamily="Segoe UI" Background="#FF8B46B4" Foreground="Black"
+             VerticalContentAlignment="Center" 
+             Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+             Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBlock Name="LoginHint" Text="Введіть логін" Foreground="#FF2D2525" VerticalAlignment="Center"
+               HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Пароль -->
             <Grid>
-                <Border BorderBrush="#FF5B2E91" BorderThickness="1" CornerRadius="15">
-                    <PasswordBox x:Name="PasswordBox" 
-                                 Width="250" Height="40" Margin="0,10" 
-                                 FontFamily="Segoe UI" Background="White" Foreground="Black"
-                                 VerticalContentAlignment="Center"
-                                 PasswordChanged="PasswordBox_PasswordChanged"
-                                 GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"
-                                 Style="{StaticResource RoundedPasswordBoxStyle}"/>
-                </Border>
-                <TextBlock Name="PasswordHint" Text="Введіть пароль" Foreground="Gray" VerticalAlignment="Center"
-                           HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
+                <PasswordBox x:Name="PasswordBox" 
+                 Width="250" Height="40" Margin="0,10" 
+                 FontFamily="Segoe UI" Background="White" Foreground="Black"
+                 VerticalContentAlignment="Center"
+                 PasswordChanged="PasswordBox_PasswordChanged"
+                 GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"
+                 Style="{StaticResource RoundedPasswordBoxStyle}"/>
+                <TextBlock Name="PasswordHint" Text="Введіть пароль" Foreground="#FF2D2525" VerticalAlignment="Center"
+               HorizontalAlignment="Left" Margin="10,0" IsHitTestVisible="False" />
             </Grid>
 
             <!-- Кнопка входа -->

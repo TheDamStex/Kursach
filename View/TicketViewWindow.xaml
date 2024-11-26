@@ -1,11 +1,72 @@
 ﻿<Window x:Class="Kursach.View.TicketViewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Перегляд Квитків" Height="400" Width="770"
+        Title="Перегляд квитків" Height="400" Width="770"
         Background="{StaticResource BackgroundGradient}">
-    <Grid Margin="20">
+    <Window.Resources>
+        <!-- Стиль для фону -->
+        <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="White" Offset="0" />
+            <GradientStop Color="#002366" Offset="1" />
+        </LinearGradientBrush>
+
+        <!-- Анімація для фону -->
+        <ColorAnimation x:Key="BackgroundColorAnimation"
+                Duration="0:0:2"
+                From="White"
+                To="#002366"
+                AutoReverse="True"
+                RepeatBehavior="Forever" />
+        <Storyboard x:Key="GradientAnimation">
+            <ColorAnimation 
+                Storyboard.TargetName="GradientStop1" 
+                Storyboard.TargetProperty="Color"
+                From="White" To="DarkBlue" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever"/>
+            <ColorAnimation 
+                Storyboard.TargetName="GradientStop2" 
+                Storyboard.TargetProperty="Color"
+                From="DarkBlue" To="White" Duration="0:0:3" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+
+        <!-- Стиль для закругленої кнопки -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#6A0DAD"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="171"/>
+            <Setter Property="Height" Value="37"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="20">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
-            <TextBlock Text="Доступні квитки" Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,10" FontFamily="Arial Black"/>
+            <TextBlock Text="Доступні квитки" Style="{StaticResource HeaderTextStyle}" FontFamily="Arial Black" FontSize="24" HorizontalAlignment="Center">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
+                        <!-- Білий -->
+                        <GradientStop x:Name="GradientStop2" Color="DarkBlue" Offset="1.0"/>
+                        <!-- Темно-синій -->
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+
             <ListView Name="TicketListView" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -26,7 +87,9 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="Купити " Click="BuyTicket_Click" FontFamily="Arial Black" Width="171"/>
+
+            <!-- Кнопка Купити з закругленими кутами -->
+            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Click="BuyTicket_Click"/>
         </StackPanel>
     </Grid>
 </Window>

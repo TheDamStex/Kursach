@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 using Kursach.ViewModel;
 
 namespace Kursach.View
@@ -58,6 +61,19 @@ namespace Kursach.View
             {
                 PasswordHint2.Visibility = Visibility.Visible;
             }
+        }
+        private void HeaderTextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Получаем объект TextBlock, на котором будет применена анимация
+            var colorAnimation = (ColorAnimation)FindResource("ColorAnimation");
+            var colorStoryboard = new Storyboard();
+            colorStoryboard.Children.Add(colorAnimation);
+
+            // Применяем анимацию
+            Storyboard.SetTarget(colorAnimation, HeaderTextBlock);
+            Storyboard.SetTargetProperty(colorAnimation, new PropertyPath("(TextBlock.Foreground).(SolidColorBrush.Color)"));
+
+            colorStoryboard.Begin();
         }
     }
 }

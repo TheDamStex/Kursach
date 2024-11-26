@@ -2,6 +2,7 @@
 using Kursach.Services;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace Kursach.View
 {
@@ -44,6 +45,18 @@ namespace Kursach.View
             if (string.IsNullOrEmpty(PasswordBox.Password))
             {
                 PasswordHint.Visibility = Visibility.Visible; // Показать подсказку, если поле пустое
+            }
+        }
+        private void HeaderTextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Получаем объект TextBlock, на котором будет применена анимация
+            var headerTextBlock = sender as TextBlock;
+
+            if (headerTextBlock != null)
+            {
+                // Запускаем анимацию изменения цвета текста
+                var colorAnimation = (Storyboard)this.Resources["TextColorAnimation"];
+                colorAnimation.Begin();
             }
         }
     }

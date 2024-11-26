@@ -1,6 +1,8 @@
-﻿using Kursach.ViewModel;
+﻿using Kursach.Model;
+using Kursach.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Kursach.View
 {
@@ -11,6 +13,7 @@ namespace Kursach.View
             InitializeComponent();
             DataContext = new PaymentViewModel();
         }
+        
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
@@ -19,7 +22,5 @@ namespace Kursach.View
                 viewModel.CVV = ((PasswordBox)sender).Password;
             }
         }
-
-
     }
 }
