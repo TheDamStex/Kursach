@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursach.View"
         mc:Ignorable="d"
-        Title="Оплата квитка" Height="520" Width="400"
+        Title="Оплата квитка" Height="550" Width="400"
         Background="{StaticResource BackgroundGradient}">
     <Window.Resources>
         <!-- Стиль для фону -->
@@ -14,14 +14,14 @@
             <GradientStop Color="#002366" Offset="1" />
         </LinearGradientBrush>
 
-        <!-- Стиль для текстовых полей с подсказками -->
+        <!-- Стиль для TextBox с водяным знаком и округленной фиолетовой обводкой -->
         <Style x:Key="WatermarkedTextBoxStyle" TargetType="TextBox">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Padding" Value="15,10"/>
             <Setter Property="Margin" Value="0,15"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#DDDDDD"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#4B0082"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Height" Value="50"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -33,99 +33,146 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Grid>
-                            <!-- Подсказка внутри поля -->
-                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
-                                       Foreground="#A3A3A3"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="15,0,0,0"
-                                       IsHitTestVisible="False"/>
-                            <!-- Текстовое поле -->
-                            <TextBox x:Name="textBox" Background="Transparent" BorderBrush="Transparent"/>
-                        </Grid>
+                        <Border BorderBrush="#4B0082" BorderThickness="2" CornerRadius="25">
+                            <Grid>
+                                <!-- Текст подказки, который исчезает при фокусе -->
+                                <TextBlock x:Name="WatermarkTextBlock" 
+                                           Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
+                                           Foreground="#A3A3A3"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="15,0,0,0"
+                                           IsHitTestVisible="False"/>
+                                <TextBox x:Name="textBox" Background="Transparent" BorderBrush="Transparent"
+                                         BorderThickness="0"
+                                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                                         VerticalContentAlignment="Center"/>
+                            </Grid>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <!-- Стиль для кнопки с округленными углами через Border -->
+        <!-- Стиль для PasswordBox с округленной фиолетовой обводкой -->
+        <Style x:Key="WatermarkedPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="Margin" Value="0,15"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#4B0082"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border BorderBrush="#4B0082" BorderThickness="2" CornerRadius="25">
+                            <Grid>
+                                <TextBlock x:Name="WatermarkTextBlock" 
+                                           Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
+                                           Foreground="#A3A3A3"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="15,0,0,0"
+                                           IsHitTestVisible="False"/>
+                                <PasswordBox x:Name="passwordBox" Background="Transparent" BorderBrush="Transparent"
+                                             BorderThickness="0"
+                                             GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для кнопки с градиентом и округлыми углами -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10,15"/>
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1E90FF" Offset="0"/>
+                        <GradientStop Color="#00BFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="0,20,0,0"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="BorderBrush" Value="#388E3C"/>
+            <Setter Property="BorderBrush" Value="#4B0082"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="2" 
-                                CornerRadius="25">
-                            <ContentPresenter HorizontalAlignment="Center" 
-                                              VerticalAlignment="Center"/>
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Window.Resources>
 
-    <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Height="458">
-            <!-- Поле для ввода ПІП (ФИО) -->
-            <TextBox Style="{StaticResource WatermarkedTextBoxStyle}" 
-                     Tag="ПІП" 
-                     Width="350"
-                     Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+    <Grid Background="{StaticResource BackgroundGradient}">
+        <!-- Поле для ФИО -->
+        <TextBox x:Name="FullName" Style="{StaticResource WatermarkedTextBoxStyle}" 
+                 Tag="ФИО" Margin="10,10,10,0" VerticalAlignment="Top"
+                 Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
 
-            <!-- Поле для ввода телефона -->
-            <TextBox Style="{StaticResource WatermarkedTextBoxStyle}" 
-                     Tag="Телефон" 
-                     Width="350"
-                     Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+        <!-- Поле для номера карты -->
+        <TextBox x:Name="CardNumber" Style="{StaticResource WatermarkedTextBoxStyle}" 
+                 Tag="Номер карты" Margin="10,70,10,0" VerticalAlignment="Top"
+                 Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged}"
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
 
-            <!-- Поле для ввода номера карты -->
-            <TextBox Style="{StaticResource WatermarkedTextBoxStyle}" 
-                     Tag="Номер карти" 
-                     Width="350"
-                     Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged}"/>
+        <!-- Поле для срока действия карты -->
+        <TextBox x:Name="ExpiryDate" Style="{StaticResource WatermarkedTextBoxStyle}" 
+                 Tag="ММ/ГГ" Margin="10,130,10,0" VerticalAlignment="Top"
+                 Text="{Binding ExpiryDate, UpdateSourceTrigger=PropertyChanged}"
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
 
-            <!-- Поле для имени владельца карты -->
+        <!-- Поле для телефона -->
+        <TextBox x:Name="PhoneNumber" Style="{StaticResource WatermarkedTextBoxStyle}" 
+                 Tag="Номер телефона" Margin="10,190,10,0" VerticalAlignment="Top"
+                 Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
 
-            <!-- Поле для срока действия карты -->
-            <TextBox Style="{StaticResource WatermarkedTextBoxStyle}" 
-                     Tag="Строк дії (MM/YY)"
-                     Width="350"
-                     Text="{Binding ExpiryDate, UpdateSourceTrigger=PropertyChanged}"/>
-            <PasswordBox
-                         Tag="CVV"
-                         Width="350"
-                         PasswordChanged="PasswordBox_PasswordChanged"/>
-            <Button Content="Сплатити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding PayCommand}" Width="200" Height="50" BorderBrush="Transparent" BorderThickness="1" FontSize="16" FontFamily="Arial Black" Foreground="White">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+        <!-- Поле для CVV -->
+        <PasswordBox x:Name="CVV" Style="{StaticResource WatermarkedPasswordBoxStyle}" 
+             Tag="CVV" Margin="10,250,10,0" VerticalAlignment="Top"
+             PasswordChanged="PasswordBox_PasswordChanged" 
+             GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
 
-            <!-- Поле для CVV -->
-
-            <!-- Кнопка оплаты -->
-
-        </StackPanel>
+        <!-- Кнопка Сплатить с привязкой к команде -->
+        <Button Content="Сплатити" 
+                Style="{StaticResource RoundedButtonStyle}" 
+                Margin="132,320,117,0" 
+                VerticalAlignment="Top"
+                Height="50"
+                Command="{Binding PayCommand}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="2" 
+                            CornerRadius="25">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>
