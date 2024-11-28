@@ -28,6 +28,9 @@ public class RelayCommand : ICommand
 
     public void RaiseCanExecuteChanged()
     {
+        CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         CommandManager.InvalidateRequerySuggested();
+
     }
+
 }

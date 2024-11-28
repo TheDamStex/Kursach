@@ -13,6 +13,7 @@ namespace Kursach.View
             InitializeComponent();
             _authService = new AuthService();
             DataContext = new MainWindowVievModel(_authService);
+
         }
 
         private void OpenScheduleWindow(object sender, RoutedEventArgs e)

@@ -11,7 +11,6 @@ namespace Kursach.View
         public PaymentWindow()
         {
             InitializeComponent();
-            DataContext = new PaymentViewModel();
         }
         
 

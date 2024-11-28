@@ -96,5 +96,6 @@ namespace Kursach.ViewModel
             var registrationWindow = new RegistrationWindow();
             registrationWindow.Show();
         }
+
     }
 }

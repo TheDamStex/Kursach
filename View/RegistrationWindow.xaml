@@ -136,7 +136,8 @@
                          Width="250" Height="40" Margin="0,10"
                          FontFamily="Segoe UI" Background="#FF8B46B4" Foreground="Black"
                          VerticalContentAlignment="Center"
-                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                         Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
                 <!-- Підказка для логіну -->
                 <TextBlock x:Name="LoginHint" Text="Введіть логін"
                            HorizontalAlignment="Left" VerticalAlignment="Center"

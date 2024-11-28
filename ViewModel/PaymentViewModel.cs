@@ -1,71 +1,30 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using Kursach.Model;
+using Kursach.View;
+using System;
+using System.Linq;
 using System.Windows;
 
 namespace Kursach.ViewModel
 {
-    public class PaymentViewModel : INotifyPropertyChanged
+    public class PaymentViewModel : ViewModelBase
     {
-        private string _cardNumber;
-        private string _cardHolderName;
-        private string _expiryDate;
-        private string _cvv;
+        private Flight _selectedFlight;
 
-        public string CardNumber
-        {
-            get => _cardNumber;
-            set
-            {
-                _cardNumber = value;
-                OnPropertyChanged();
-                PayCommand.RaiseCanExecuteChanged(); // Обновляем CanExecute при изменении данных
-            }
-        }
-
-        public string CardHolderName
-        {
-            get => _cardHolderName;
-            set
-            {
-                _cardHolderName = value;
-                OnPropertyChanged();
-                PayCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        public string ExpiryDate
-        {
-            get => _expiryDate;
-            set
-            {
-                _expiryDate = value;
-                OnPropertyChanged();
-                PayCommand.RaiseCanExecuteChanged();
-            }
-        }
-
-        public string CVV
-        {
-            get => _cvv;
-            set
-            {
-                _cvv = value;
-                OnPropertyChanged();
-                PayCommand.RaiseCanExecuteChanged();
-            }
-        }
+        public string CardNumber { get; set; }
+        public string CardHolderName { get; set; }
+        public string ExpiryDate { get; set; }
+        public string CVV { get; set; }
 
         public RelayCommand PayCommand { get; }
 
-        public PaymentViewModel()
+        public PaymentViewModel(Flight selectedFlight)
         {
+            _selectedFlight = selectedFlight;
             PayCommand = new RelayCommand(ExecutePay, CanExecutePay);
         }
 
         private bool CanExecutePay()
         {
-            // Проверка на заполненность всех полей
             return !string.IsNullOrWhiteSpace(CardNumber) &&
                    !string.IsNullOrWhiteSpace(CardHolderName) &&
                    !string.IsNullOrWhiteSpace(ExpiryDate) &&
@@ -74,41 +33,32 @@ namespace Kursach.ViewModel
 
         private void ExecutePay()
         {
-            // Логика оплаты
             if (ValidateCardDetails())
             {
-                MessageBox.Show("Оплата успешно выполнена!", "Успех");
+                if (_selectedFlight.FreeSeats > 0)
+                {
+                    _selectedFlight.FreeSeats--;
+                    MessageBox.Show("Оплата прошла успешно!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Application.Current.Windows.OfType<PaymentWindow>().FirstOrDefault()?.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Нет свободных мест!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Ошибка в данных карты. Проверьте ввод!", "Ошибка");
+                MessageBox.Show("Некорректные данные карты.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+
         private bool ValidateCardDetails()
         {
-            // Проверка корректности номера карты
-            if (CardNumber.Length != 16 || !long.TryParse(CardNumber, out _))
-                return false;
-
-            // Проверка срока действия (формат MM/YY)
-            if (!DateTime.TryParseExact("01/" + ExpiryDate, "dd/MM/yy", null, System.Globalization.DateTimeStyles.None, out DateTime expiryDate))
-                return false;
-
-            if (expiryDate < DateTime.Now)
-                return false;
-
-            // Проверка CVV
-            if (CVV.Length != 3 || !int.TryParse(CVV, out _))
-                return false;
-
-            return true;
+            // Простейшая проверка данных карты
+            return CardNumber.Length == 16 && CVV.Length == 3 && DateTime.TryParseExact("01/" + ExpiryDate, "dd/MM/yy", null, System.Globalization.DateTimeStyles.None, out DateTime expiryDate) && expiryDate > DateTime.Now;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+
     }
 }

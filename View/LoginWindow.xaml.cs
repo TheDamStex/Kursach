@@ -12,6 +12,7 @@ namespace Kursach.View
         {
             InitializeComponent();
             DataContext = new LoginViewModel(authService);
+
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)

@@ -3,6 +3,7 @@
     public class AuthService : BaseViewModel
     {
         private bool _isLoggedIn;
+        private string _currentUser;
 
         public bool IsLoggedIn
         {
@@ -13,5 +14,16 @@
                 OnPropertyChanged(nameof(IsLoggedIn));
             }
         }
+
+        public string CurrentUser
+        {
+            get => _currentUser;
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
     }
+
 }

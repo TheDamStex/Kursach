@@ -67,7 +67,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView Name="TicketListView" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView Name="TicketListView" ItemsSource="{Binding Flights}" SelectedItem="{Binding SelectedFlight}" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#800080" Offset="0.0"/>
@@ -89,7 +89,7 @@
             </ListView>
 
             <!-- Кнопка Купити з закругленими кутами -->
-            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Click="BuyTicket_Click"/>
+            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding OpenPaymentWindowCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Авторизація" Height="320" Width="400"
         Background="{StaticResource BackgroundGradient}">
-
+    
     <Window.Resources>
         <!-- Стиль для фону -->
         <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">

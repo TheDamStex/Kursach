@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kursach.Services;
+using Kursach.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -14,6 +16,7 @@ namespace Kursach.View
             InitializeComponent();
             this.purchases = purchases;
             LoadFlights();
+            DataContext = new TicketViewViewModel(); // Проверь, что DataContext установлен на соответствующую ViewModel
         }
 
         private void LoadFlights()

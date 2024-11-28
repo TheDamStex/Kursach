@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using Kursach.Model;
 using System.Collections.Generic;
+using System;
 
 namespace Kursach.ViewModel
 {
@@ -61,23 +62,20 @@ namespace Kursach.ViewModel
 
         public RegistrationViewModel()
         {
-            RegisterCommand = new RelayCommand(Register, CanRegisterUser);
-        }
-        private bool CanRegisterUser()
-        {
-            // Перевірка, чи всі поля заповнені та паролі збігаються
-            return !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && Password == ConfirmPassword;
+            RegisterCommand = new RelayCommand(Register, () => CanRegister);
         }
 
         private void UpdateCanRegister()
         {
+            Console.WriteLine($"Login: '{Login}', Password: '{Password}', ConfirmPassword: '{ConfirmPassword}'");
             CanRegister = !string.IsNullOrWhiteSpace(Login) &&
-                  !string.IsNullOrWhiteSpace(Password) &&
-                  Password == ConfirmPassword;
-
-            // Оновлюємо команду
+                          !string.IsNullOrWhiteSpace(Password) &&
+                          Password == ConfirmPassword;
+            Console.WriteLine($"CanRegister updated: {CanRegister}");
             (RegisterCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
+
+
 
         private void Register()
         {
