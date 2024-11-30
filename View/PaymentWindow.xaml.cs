@@ -1,5 +1,4 @@
-﻿using Kursach.Model;
-using Kursach.ViewModel;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,27 +10,55 @@ namespace Kursach.View
     {
         public PaymentWindow()
         {
-            
             InitializeComponent();
-            
+            InitializeWatermarkVisibility();
+            this.Deactivated += PaymentWindow_Deactivated; // Обработка события потери фокуса окна
         }
-        
 
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private void InitializeWatermarkVisibility()
         {
-            if (DataContext is PaymentViewModel viewModel)
+            // Для каждого TextBox и PasswordBox проверяем, есть ли текст. Если нет, показываем водяной знак
+            SetWatermarkVisibility(FullName);
+            SetWatermarkVisibility(CardNumber);
+            SetWatermarkVisibility(ExpiryDate);
+            SetWatermarkVisibility(PhoneNumber);
+            SetPasswordWatermarkVisibility(CVV);
+        }
+
+        private void SetWatermarkVisibility(TextBox textBox)
+        {
+            var watermark = (TextBlock)textBox.Template.FindName("WatermarkTextBlock", textBox);
+            if (watermark != null)
             {
-                viewModel.CVV = ((PasswordBox)sender).Password;
+                watermark.Visibility = string.IsNullOrWhiteSpace(textBox.Text) ? Visibility.Visible : Visibility.Collapsed;
             }
         }
+
+        private void SetPasswordWatermarkVisibility(PasswordBox passwordBox)
+        {
+            var watermark = (TextBlock)passwordBox.Template.FindName("WatermarkTextBlock", passwordBox);
+            if (watermark != null)
+            {
+                watermark.Visibility = string.IsNullOrWhiteSpace(passwordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        private void PaymentWindow_Deactivated(object sender, EventArgs e)
+        {
+            // Когда окно теряет фокус, проверяем все текстовые поля и PasswordBox
+            SetWatermarkVisibility(FullName);
+            SetWatermarkVisibility(CardNumber);
+            SetWatermarkVisibility(ExpiryDate);
+            SetWatermarkVisibility(PhoneNumber);
+            SetPasswordWatermarkVisibility(CVV);
+        }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
+            if (sender is TextBox textBox)
             {
-                // Скрываем водяной знак, если в поле уже есть текст
-                TextBlock watermark = FindChild<TextBlock>(textBox, "WatermarkTextBlock");
-                if (watermark != null && string.IsNullOrEmpty(textBox.Text))
+                var watermark = (TextBlock)textBox.Template.FindName("WatermarkTextBlock", textBox);
+                if (watermark != null)
                 {
                     watermark.Visibility = Visibility.Collapsed;
                 }
@@ -40,25 +67,22 @@ namespace Kursach.View
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
+            if (sender is TextBox textBox)
             {
-                // Показываем водяной знак, если поле пустое
-                TextBlock watermark = FindChild<TextBlock>(textBox, "WatermarkTextBlock");
-                if (watermark != null && string.IsNullOrEmpty(textBox.Text))
+                // Проверка, есть ли текст. Если нет, водяной знак показывается.
+                var watermark = (TextBlock)textBox.Template.FindName("WatermarkTextBlock", textBox);
+                if (watermark != null)
                 {
-                    watermark.Visibility = Visibility.Visible;
+                    watermark.Visibility = string.IsNullOrWhiteSpace(textBox.Text) ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
         }
 
         private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            PasswordBox passwordBox = sender as PasswordBox;
-            if (passwordBox != null)
+            if (sender is PasswordBox passwordBox)
             {
-                // Скрываем подсказку
-                TextBlock watermark = FindChild<TextBlock>(passwordBox, "WatermarkTextBlock");
+                var watermark = (TextBlock)passwordBox.Template.FindName("WatermarkTextBlock", passwordBox);
                 if (watermark != null)
                 {
                     watermark.Visibility = Visibility.Collapsed;
@@ -68,44 +92,40 @@ namespace Kursach.View
 
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            PasswordBox passwordBox = sender as PasswordBox;
-            if (passwordBox != null)
+            if (sender is PasswordBox passwordBox)
             {
-                // Показываем подсказку, если поле пустое
-                TextBlock watermark = FindChild<TextBlock>(passwordBox, "WatermarkTextBlock");
-                if (watermark != null && string.IsNullOrEmpty(passwordBox.Password))
+                var watermark = (TextBlock)passwordBox.Template.FindName("WatermarkTextBlock", passwordBox);
+                if (watermark != null)
                 {
-                    watermark.Visibility = Visibility.Visible;
+                    watermark.Visibility = string.IsNullOrWhiteSpace(passwordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
         }
 
-        private T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
-            for (int i = 0; i < childrenCount; i++)
+            if (sender is TextBox textBox)
             {
-                var child = VisualTreeHelper.GetChild(parent, i);
-                if (child is T)
+                // Обновление видимости водяного знака при изменении текста
+                var watermark = (TextBlock)textBox.Template.FindName("WatermarkTextBlock", textBox);
+                if (watermark != null)
                 {
-                    T childOfType = (T)child;
-                    if (childOfType is FrameworkElement fe && fe.Name == childName)
-                    {
-                        return childOfType;
-                    }
-                }
-
-                // Рекурсивно ищем в дочерних элементах
-                T result = FindChild<T>(child, childName);
-                if (result != null)
-                {
-                    return result;
+                    watermark.Visibility = string.IsNullOrWhiteSpace(textBox.Text) ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
-
-            return null;
         }
 
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (sender is PasswordBox passwordBox)
+            {
+                // Обновление видимости водяного знака при изменении пароля
+                var watermark = (TextBlock)passwordBox.Template.FindName("WatermarkTextBlock", passwordBox);
+                if (watermark != null)
+                {
+                    watermark.Visibility = string.IsNullOrWhiteSpace(passwordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+        }
     }
-
 }
