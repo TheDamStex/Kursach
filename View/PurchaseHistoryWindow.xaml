@@ -31,7 +31,7 @@
 
     <Grid Margin="0,0,2,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
-            <TextBlock Text="Історія покупок" Style="{StaticResource HeaderTextStyle}" FontSize="24" FontFamily="Arial Black">
+            <TextBlock Text="Історія покупок" Style="{StaticResource HeaderTextStyle}" FontSize="24" FontFamily="Magneto" Height="28">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
@@ -42,8 +42,8 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView Name="PurchaseHistoryListView" Margin="0,10" FontFamily="Arial Black"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView Name="PurchaseHistoryListView" Margin="0,10" FontFamily="Comic Sans MS"
+                      HorizontalAlignment="Stretch" Width="570">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#800080" Offset="0.0"/>

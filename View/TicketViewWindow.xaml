@@ -56,7 +56,7 @@
 
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
-            <TextBlock Text="Доступні квитки" Style="{StaticResource HeaderTextStyle}" FontFamily="Arial Black" FontSize="24" HorizontalAlignment="Center">
+            <TextBlock Text="Доступні квитки" Style="{StaticResource HeaderTextStyle}" FontFamily="Magneto" FontSize="24" HorizontalAlignment="Center">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
@@ -67,7 +67,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView Name="TicketListView" ItemsSource="{Binding Flights}" SelectedItem="{Binding SelectedFlight}" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView Name="TicketListView" ItemsSource="{Binding Flights}" SelectedItem="{Binding SelectedFlight}" FontFamily="Comic Sans MS" FontSize="9" HorizontalAlignment="Stretch" Width="725">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#800080" Offset="0.0"/>
@@ -89,7 +89,7 @@
             </ListView>
 
             <!-- Кнопка Купити з закругленими кутами -->
-            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding OpenPaymentWindowCommand}"/>
+            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding OpenPaymentWindowCommand}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>

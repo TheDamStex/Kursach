@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Kursach.View.ScheduleWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Розклад автобусів" Height="600" Width="1450"
+        Title="Розклад автобусів" Height="600" Width="1550"
         Background="{StaticResource BackgroundGradient}">
     <Window.Resources>
         <!-- Стиль для фону -->
@@ -57,7 +57,7 @@
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel VerticalAlignment="Top">
             <TextBlock Text="Розклад автобусів" Style="{StaticResource HeaderTextStyle}" FontSize="28" 
-                       HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="Arial Black">
+                       HorizontalAlignment="Center" Margin="0,0,0,20" FontFamily="Magneto">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
@@ -68,7 +68,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView Name="BusScheduleListView" ItemsSource="{Binding Flights}" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView Name="BusScheduleListView" ItemsSource="{Binding Flights}" FontFamily="Comic Sans MS" FontSize="9" HorizontalAlignment="Stretch" Width="1398">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#800080" Offset="0.0"/>

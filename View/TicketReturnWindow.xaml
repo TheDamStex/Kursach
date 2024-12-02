@@ -66,7 +66,7 @@
 
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
-            <TextBlock Text="Повернення квитка" Style="{StaticResource HeaderTextStyle}" FontFamily="Arial Black" FontSize="24" HorizontalAlignment="Center">
+            <TextBlock Text="Повернення квитка" Style="{StaticResource HeaderTextStyle}" FontFamily="Magneto" FontSize="24" HorizontalAlignment="Center">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop x:Name="GradientStop1" Color="White" Offset="0.0"/>
@@ -76,7 +76,7 @@
             </TextBlock>
 
             <!-- Комбобокс з темно-блакитним фоном -->
-            <ComboBox Name="TicketComboBox" Background="#FF9246B4" BorderBrush="#6A0DAD" Height="29" Foreground="#FF8B46B4">
+            <ComboBox Name="TicketComboBox" Background="#FF9246B4" BorderBrush="#6A0DAD" Height="29" Foreground="#FF8B46B4" FontFamily="Comic Sans MS" FontWeight="Bold">
                 <ComboBoxItem Content="Option 1">
                     <ComboBoxItem.BorderBrush>
                         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.MenuHighlightColorKey}}"/>
@@ -87,7 +87,7 @@
             </ComboBox>
 
             <!-- Кнопка з закругленими кутами -->
-            <Button Content="Повернути" Style="{StaticResource RoundedButtonStyle}"/>
+            <Button Content="Повернути" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>

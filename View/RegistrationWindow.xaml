@@ -124,59 +124,80 @@
     </Window.Resources>
 
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="377">
             <TextBlock x:Name="HeaderTextBlock" Text="Registration" 
                        Style="{StaticResource HeaderTextStyle}" 
-                       Margin="0,0,0,20" FontFamily="Arial Black" 
+                       Margin="0,0,0,20" FontFamily="Magneto" 
                        Loaded="HeaderTextBlock_Loaded"/>
 
             <!-- Логін -->
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="D:\kursach\login.png" Width="42" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="34,0,0,0"/>
                 <TextBox x:Name="LoginTextBox" Style="{StaticResource RoundedTextBoxStyle}" 
-                         Width="250" Height="40" Margin="0,10"
-                         FontFamily="Segoe UI" Background="#FF8B46B4" Foreground="Black"
-                         VerticalContentAlignment="Center"
-                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
-                         Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
+             FontFamily="Comic Sans MS" Background="#FF8B46B4" Foreground="Black"
+             VerticalContentAlignment="Center"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+             Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Margin="4,10,28,10" Grid.Column="1" FontWeight="Bold" />
                 <!-- Підказка для логіну -->
                 <TextBlock x:Name="LoginHint" Text="Введіть логін"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Foreground="#FF2D2525" Margin="10,0,0,0" Visibility="Visible"/>
+               Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+               Foreground="#FF2D2525" Margin="39,0,0,0" Visibility="Visible" FontFamily="Comic Sans MS" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Width="238">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.078"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
             </Grid>
 
             <!-- Пароль -->
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="D:\kursach\password.png" Width="30" Height="30" Margin="36,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
                 <PasswordBox x:Name="PasswordBox1" Style="{StaticResource RoundedPasswordBoxStyle}" 
-                             Width="250" Height="40" Margin="0,10" 
-                             FontFamily="Segoe UI" Background="White" Foreground="Black"
-                             VerticalContentAlignment="Center"
-                             PasswordChanged="PasswordBox1_PasswordChanged"
-                             GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                 FontFamily="Comic Sans MS" Background="White" Foreground="Black"
+                 VerticalContentAlignment="Center"
+                 PasswordChanged="PasswordBox1_PasswordChanged"
+                 GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Margin="4,10,28,10" Grid.Column="1"/>
                 <!-- Підказка для пароля -->
                 <TextBlock x:Name="PasswordHint1" Text="Введіть пароль"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Foreground="#FF2D2525" Margin="10,0,0,0" Visibility="Visible"/>
+               Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="#FF2D2525" Visibility="Visible" FontFamily="Comic Sans MS" FontWeight="Bold" Width="258"/>
             </Grid>
 
             <!-- Підтвердження пароля -->
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="D:\kursach\password.png" Width="40" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="36,0,0,0"/>
                 <PasswordBox x:Name="PasswordBox2" Style="{StaticResource RoundedPasswordBoxStyle}" 
-                             Width="250" Height="40" Margin="0,10" 
-                             FontFamily="Segoe UI" Background="White" Foreground="Black"
-                             VerticalContentAlignment="Center"
-                             PasswordChanged="PasswordBox2_PasswordChanged"
-                             GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                 FontFamily="Comic Sans MS" Background="White" Foreground="Black"
+                 VerticalContentAlignment="Center"
+                 PasswordChanged="PasswordBox2_PasswordChanged"
+                 GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Margin="4,10,28,10" Grid.Column="1"/>
                 <!-- Підказка для підтвердження пароля -->
-                <TextBlock x:Name="PasswordHint2" Text="Підтвердьте пароль"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Foreground="#FF2D2525" Margin="10,0,0,0" Visibility="Visible"/>
+                <TextBlock x:Name="PasswordHint2" Text="Підтвердіть пароль"
+               Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+               Foreground="#FF2D2525" Margin="43,0,0,0" Visibility="Visible" FontFamily="Comic Sans MS" FontWeight="Bold" Width="230"/>
             </Grid>
 
             <!-- Кнопка реєстрації -->
             <Button Content="Зареєструватися" 
                     Command="{Binding RegisterCommand}" 
                     IsEnabled="{Binding CanRegister}"
-                    Style="{StaticResource RoundedButtonStyle}"/>
+                    Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Width="188"/>
         </StackPanel>
     </Grid>
 </Window>

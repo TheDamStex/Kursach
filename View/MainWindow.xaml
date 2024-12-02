@@ -58,12 +58,12 @@
 
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" MinHeight="141"/>
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,48,0,10" Width="292">
 
             <StackPanel.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
@@ -86,10 +86,18 @@
                 </EventTrigger>
             </StackPanel.Triggers>
             <TextBlock x:Name="AnimatedTextBlock"
-               FontFamily="Arial Black"
+               FontFamily="Magneto"
                Text="BusBuy"
-               FontSize="34"
+               FontSize="50" FontWeight="Bold" Height="65" Width="205" RenderTransformOrigin="0.641,0.434"
                >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.412"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.669"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Offset="0.0" Color="White" x:Name="GradientStop1"/>
@@ -103,14 +111,14 @@
             </TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="182" Width="600">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
-                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
-                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
             </StackPanel>
             <Border Margin="0,10" Height="2">
                 <Border.Background>
@@ -122,8 +130,8 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <Button Content="Авторизація" Command="{Binding OpenLoginWindowCommand}" Style="{StaticResource RoundedButtonStyle}">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,20" Width="400">
+            <Button Content="Авторизація" Command="{Binding OpenLoginWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
@@ -134,7 +142,7 @@
                     <SolidColorBrush Color="White"/>
                 </Button.Foreground>
             </Button>
-            <Button Content="Реєстрація" Command="{Binding OpenRegistrationWindowCommand}" Style="{StaticResource RoundedButtonStyle}">
+            <Button Content="Реєстрація" Command="{Binding OpenRegistrationWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
@@ -146,5 +154,21 @@
                 </Button.Foreground>
             </Button>
         </StackPanel>
+        <Image Source="D:\kursach\bus1.png" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="-8,-21,0,0" 
+               Height="134" 
+               Opacity="0.8" 
+               RenderTransformOrigin="0.5,0.5" Width="147">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.99999999999999989" ScaleY="0.99999999999999989"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="28.806"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>
