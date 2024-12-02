@@ -194,7 +194,7 @@
             <Button Content="Увійти" 
                     Command="{Binding LoginCommand}" 
                     Width="116" Height="30" FontFamily="Comic Sans MS" 
-                    Style="{StaticResource RoundedButtonStyle}" FontWeight="Bold"/>
+                    Style="{StaticResource RoundedButtonStyle}" FontWeight="Bold" Background="#FF7B11FA"/>
 
             <!-- Кнопка входа -->
         </StackPanel>

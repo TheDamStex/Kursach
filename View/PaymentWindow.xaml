@@ -149,6 +149,12 @@
                 VerticalAlignment="Top"
                 Height="50"
                 Command="{Binding PayCommand}" FontFamily="Comic Sans MS" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="DodgerBlue"/>
+                    <GradientStop Color="#FF7B11FA" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 

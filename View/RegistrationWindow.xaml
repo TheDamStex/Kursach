@@ -197,7 +197,7 @@
             <Button Content="Зареєструватися" 
                     Command="{Binding RegisterCommand}" 
                     IsEnabled="{Binding CanRegister}"
-                    Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Width="188"/>
+                    Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Width="188" Background="#FF7B11FA"/>
         </StackPanel>
     </Grid>
 </Window>
