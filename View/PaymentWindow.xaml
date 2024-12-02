@@ -45,7 +45,6 @@
                                            IsHitTestVisible="False"/>
                                 <TextBox x:Name="textBox" Background="Transparent" BorderBrush="Transparent"
                                          BorderThickness="0"
-                                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
                                          VerticalContentAlignment="Center"
                                          HorizontalContentAlignment="Left"/>
                             </Grid>
@@ -85,7 +84,6 @@
                                            IsHitTestVisible="False"/>
                                 <PasswordBox x:Name="passwordBox" Background="Transparent" BorderBrush="Transparent"
                                              BorderThickness="0"
-                                             GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"
                                              VerticalContentAlignment="Center" 
                                              HorizontalContentAlignment="Left"/>
                             </Grid>
@@ -129,39 +127,20 @@
     </Window.Resources>
 
     <Grid Background="{StaticResource BackgroundGradient}">
-        <!-- Поле для ФИО -->
-        <TextBox x:Name="FullName" Style="{StaticResource WatermarkedTextBoxStyle}" 
-         Tag="ПІП" Margin="10,10,10,0" VerticalAlignment="Top"
-         Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
-         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
-         TextChanged="TextBox_TextChanged"/>
 
         <!-- Поле для номера карты -->
         <TextBox x:Name="CardNumber" Style="{StaticResource WatermarkedTextBoxStyle}" 
-         Tag="Номер карти" Margin="10,70,10,0" VerticalAlignment="Top"
-         Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged}"
-         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
-         TextChanged="TextBox_TextChanged"/>
+         Tag="Номер карти" Margin="10,28,10,0" VerticalAlignment="Top"
+         Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Поле для срока действия карты -->
         <TextBox x:Name="ExpiryDate" Style="{StaticResource WatermarkedTextBoxStyle}" 
-         Tag="Строк дії ММ/ГГ" Margin="10,130,10,0" VerticalAlignment="Top"
-         Text="{Binding ExpiryDate, UpdateSourceTrigger=PropertyChanged}"
-         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
-         TextChanged="TextBox_TextChanged"/>
-
-        <!-- Поле для телефона -->
-        <TextBox x:Name="PhoneNumber" Style="{StaticResource WatermarkedTextBoxStyle}" 
-         Tag="Телефон" Margin="10,190,10,0" VerticalAlignment="Top"
-         Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"
-         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
-         TextChanged="TextBox_TextChanged"/>
+         Tag="Строк дії ММ/ГГ" Margin="10,92,10,0" VerticalAlignment="Top"
+         Text="{Binding ExpiryDate, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- Поле для CVV -->
         <PasswordBox x:Name="CVV" Style="{StaticResource WatermarkedPasswordBoxStyle}" 
-         Tag="CVV" Margin="10,250,10,0" VerticalAlignment="Top"
-         PasswordChanged="PasswordBox_PasswordChanged" 
-         GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+         Tag="CVV" Margin="10,156,10,0" VerticalAlignment="Top" PasswordChanged="CVV_PasswordChanged"/>
 
         <!-- Кнопка Сплатить с привязкой к команде -->
         <Button Content="Сплатити" 

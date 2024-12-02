@@ -43,12 +43,6 @@ public class TicketViewViewModel : ViewModelBase
         OpenPaymentWindowCommand = new RelayCommand(ExecuteOpenPaymentWindowCommand);
     }
 
-    // Метод, проверяющий возможность открытия окна оплаты (если есть выбранный рейс и свободные места)
-    private bool CanExecuteOpenPaymentWindowCommand()
-    {
-        return SelectedFlight != null && SelectedFlight.FreeSeats > 0;
-    }
-
     // Метод, открывающий окно оплаты и выполняющий логику покупки билета
     private void ExecuteOpenPaymentWindowCommand()
     {

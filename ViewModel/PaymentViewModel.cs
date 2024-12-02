@@ -1,64 +1,57 @@
 ﻿using Kursach.Model;
-using Kursach.View;
-using System;
-using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Kursach.ViewModel
 {
     public class PaymentViewModel : ViewModelBase
     {
-        private Flight _selectedFlight;
+        private string _cardNumber;
+        private string _expiryDate;
+        private string _cvv;
 
-        public string CardNumber { get; set; }
-        public string CardHolderName { get; set; }
-        public string ExpiryDate { get; set; }
-        public string CVV { get; set; }
-
-        public RelayCommand PayCommand { get; }
-
-        public PaymentViewModel(Flight selectedFlight)
+        public string CardNumber
         {
-            _selectedFlight = selectedFlight;
-            PayCommand = new RelayCommand(ExecutePay, CanExecutePay);
-        }
-
-        private bool CanExecutePay()
-        {
-            return !string.IsNullOrWhiteSpace(CardNumber) &&
-                   !string.IsNullOrWhiteSpace(CardHolderName) &&
-                   !string.IsNullOrWhiteSpace(ExpiryDate) &&
-                   !string.IsNullOrWhiteSpace(CVV);
-        }
-
-        private void ExecutePay()
-        {
-            if (ValidateCardDetails())
+            get => _cardNumber;
+            set
             {
-                if (_selectedFlight.FreeSeats > 0)
-                {
-                    _selectedFlight.FreeSeats--;
-                    MessageBox.Show("Оплата прошла успешно!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Application.Current.Windows.OfType<PaymentWindow>().FirstOrDefault()?.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Нет свободных мест!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Некорректные данные карты.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                _cardNumber = value;
+                OnPropertyChanged(nameof(CardNumber));
             }
         }
 
-
-        private bool ValidateCardDetails()
+        public string ExpiryDate
         {
-            // Простейшая проверка данных карты
-            return CardNumber.Length == 16 && CVV.Length == 3 && DateTime.TryParseExact("01/" + ExpiryDate, "dd/MM/yy", null, System.Globalization.DateTimeStyles.None, out DateTime expiryDate) && expiryDate > DateTime.Now;
+            get => _expiryDate;
+            set
+            {
+                _expiryDate = value;
+                OnPropertyChanged(nameof(ExpiryDate));
+            }
+        }
+
+        public string CVV
+        {
+            get => _cvv;
+            set
+            {
+                _cvv = value;
+                OnPropertyChanged(nameof(CVV));
+            }
+        }
+
+        public ICommand PayCommand { get; }
+
+        public PaymentViewModel()
+        {
+            PayCommand = new RelayCommand(Payment);
         }
 
 
+        private void Payment()
+        {
+            // Логика для выполнения оплаты
+            MessageBox.Show("Оплата успешно выполнена!", "Оплата", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
