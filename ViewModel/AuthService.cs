@@ -4,6 +4,7 @@
     {
         private bool _isLoggedIn;
         private string _currentUser;
+        public static int CurrentUserId { get; set; } // ID текущего пользователя
 
         public bool IsLoggedIn
         {
@@ -24,6 +25,8 @@
                 OnPropertyChanged(nameof(CurrentUser));
             }
         }
+
+
     }
 
 }

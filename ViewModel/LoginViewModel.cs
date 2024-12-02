@@ -19,6 +19,7 @@ namespace Kursach.ViewModel
         {
             _authService = authService;
             LoginCommand = new RelayCommand(Login, CanLogin);
+
         }
 
         public string UserLogin

@@ -87,7 +87,7 @@
             </ComboBox>
 
             <!-- Кнопка з закругленими кутами -->
-            <Button Content="Повернути" Style="{StaticResource RoundedButtonStyle}" Click="Return_Click"/>
+            <Button Content="Повернути" Style="{StaticResource RoundedButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Window>

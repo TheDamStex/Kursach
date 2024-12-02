@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Kursach.Model;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace Kursach.ViewModel
 {
@@ -90,8 +91,23 @@ namespace Kursach.ViewModel
                 }
             }
 
+            // Проверяем, существует ли пользователь с таким логином
+            if (users.Exists(u => u.Login == Login))
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Генерация нового уникального ID
+            int newUserId = users.Count > 0 ? users.Max(u => u.UserId) + 1 : 1;
+
             // Добавление нового пользователя
-            var newUser = new User { Login = Login, Password = Password };
+            var newUser = new User
+            {
+                UserId = newUserId, // Присваиваем уникальный ID
+                Login = Login,
+                Password = Password
+            };
             users.Add(newUser);
 
             // Сериализация и запись обратно в файл
@@ -106,6 +122,7 @@ namespace Kursach.ViewModel
             // Выводим сообщение об успешной регистрации
             MessageBox.Show("Регистрация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
 
     }
 }

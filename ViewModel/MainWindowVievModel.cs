@@ -11,11 +11,12 @@ namespace Kursach.ViewModel
         private readonly AuthService _authService;
         private List<Purchase> _purchases;
 
+
         public MainWindowVievModel(AuthService authService)
         {
             _authService = authService;
             _purchases = new List<Purchase>();
-
+            _authService.IsLoggedIn = true;
             // Инициализация команд
             OpenScheduleWindowCommand = new RelayCommand(OpenScheduleWindow);
             OpenTicketViewWindowCommand = new RelayCommand(OpenTicketViewWindow);
@@ -76,7 +77,7 @@ namespace Kursach.ViewModel
         {
             if (_authService.IsLoggedIn)
             {
-                var ticketReturnWindow = new TicketReturnWindow(_purchases);
+                var ticketReturnWindow = new TicketReturnWindow();
                 ticketReturnWindow.Show();
             }
             else

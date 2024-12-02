@@ -68,7 +68,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView Name="BusScheduleListView" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView Name="BusScheduleListView" ItemsSource="{Binding Flights}" FontFamily="Arial Black" FontSize="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#800080" Offset="0.0"/>

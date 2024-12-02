@@ -8,6 +8,7 @@ namespace Kursach
 {
     public class Flight
     {
+        public int UserId { get; set; } // ID пользователя
         public string FlightNumber { get; set; }
         public string InitialPoint { get; set; } // Початковий пункт
         public string FinalDestination { get; set; }
