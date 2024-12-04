@@ -85,18 +85,20 @@
     </ApplicationDefinition>
     <Compile Include="Model\ClassBusScheduleItem.cs" />
     <Compile Include="Model\ClassFlight.cs" />
-    <Compile Include="Model\ClassPurchase.cs" />
     <Compile Include="Model\ClassTicket.cs" />
     <Compile Include="Model\PaymentDetails.cs" />
-    <Compile Include="Model\Ticket.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserTicket.cs" />
+    <Compile Include="Model\Validation.cs" />
     <Compile Include="ViewModel\AuthService.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowVievModel.cs" />
     <Compile Include="ViewModel\PaymentViewModel.cs" />
+    <Compile Include="ViewModel\PurchaseHistoryViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\TicketReturnViewModel.cs" />
     <Compile Include="ViewModel\TicketViewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\LoginWindow.xaml.cs">
@@ -188,6 +190,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\bus.png" />
+    <Resource Include="Content\bus1.png" />
+    <Resource Include="Content\login.png" />
+    <Resource Include="Content\password.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

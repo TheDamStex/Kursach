@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\kursach\obj\Debug\
+C:\Users\entte\Desktop\Kursach\obj\Debug\
 Kursach
 none
 false
 DEBUG;TRACE
-D:\kursach\App.xaml
+C:\Users\entte\Desktop\Kursach\App.xaml
 8-2036626026
 
-292047088855
-23-706619373
+31-461959755
+23611123872
 View\LoginWindow.xaml;View\MainWindow.xaml;View\PaymentWindow.xaml;View\PurchaseHistoryWindow.xaml;View\RegistrationWindow.xaml;View\ScheduleWindow.xaml;View\TicketReturnWindow.xaml;View\TicketViewWindow.xaml;
 
-True
+False
 

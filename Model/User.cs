@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kursach.Model
+﻿namespace Kursach.Model
 {
+    // Клас, що описує користувача системи
     public class User
     {
-        public int UserId { get; set; } // Простое целое число для уникального ID
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public int UserId { get; set; } // Унікальний ідентифікатор користувача (ціле число)
+        public string Login { get; set; } // Логін користувача
+        public string Password { get; set; } // Пароль користувача
     }
-
 }

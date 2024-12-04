@@ -6,58 +6,66 @@ using System.Windows.Media.Animation;
 
 namespace Kursach.View
 {
+    // Клас вікна входу
     public partial class LoginWindow : Window
     {
+        // Конструктор вікна, приймає сервіс авторизації
         public LoginWindow(AuthService authService)
         {
             InitializeComponent();
-            DataContext = new LoginViewModel(authService);
-
+            DataContext = new LoginViewModel(authService); // Прив'язуємо модель до вікна
         }
 
+        // Обробник зміни пароля в полі вводу пароля
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is LoginViewModel viewModel)
             {
-                viewModel.Password = (sender as PasswordBox)?.Password;
+                viewModel.Password = (sender as PasswordBox)?.Password; // Оновлюємо пароль у ViewModel
             }
         }
+
+        // Обробник події отримання фокуса на полі вводу логіна
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            LoginHint.Visibility = Visibility.Collapsed; // Скрыть подсказку, когда поле активно
+            LoginHint.Visibility = Visibility.Collapsed; // Ховаємо підказку, коли поле активно
         }
 
+        // Обробник події втрати фокуса на полі вводу логіна
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(LoginTextBox.Text))
             {
-                LoginHint.Visibility = Visibility.Visible; // Показать подсказку, если поле пустое
+                LoginHint.Visibility = Visibility.Visible; // Показуємо підказку, якщо поле порожнє
             }
         }
 
-        // Подсказки для пароля
+        // Обробник події отримання фокуса на полі вводу пароля
         private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            PasswordHint.Visibility = Visibility.Collapsed; // Скрыть подсказку, когда поле активно
+            PasswordHint.Visibility = Visibility.Collapsed; // Ховаємо підказку, коли поле активно
         }
 
+        // Обробник події втрати фокуса на полі вводу пароля
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(PasswordBox.Password))
             {
-                PasswordHint.Visibility = Visibility.Visible; // Показать подсказку, если поле пустое
+                PasswordHint.Visibility = Visibility.Visible; // Показуємо підказку, якщо поле порожнє
             }
         }
+
+        // Обробник події завантаження елементу TextBlock для анімації
         private void HeaderTextBlock_Loaded(object sender, RoutedEventArgs e)
         {
-            // Получаем объект TextBlock, на котором будет применена анимация
+            // Отримуємо об'єкт TextBlock, на якому буде застосована анімація
             var headerTextBlock = sender as TextBlock;
 
             if (headerTextBlock != null)
             {
-                // Запускаем анимацию изменения цвета текста
+                // Запускаємо анімацію зміни кольору тексту
                 var colorAnimation = (Storyboard)this.Resources["TextColorAnimation"];
-                colorAnimation.Begin();
+                colorAnimation.Begin(); // Починаємо анімацію
             }
         }
     }

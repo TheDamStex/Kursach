@@ -89,7 +89,7 @@
             </ListView>
 
             <!-- Кнопка Купити з закругленими кутами -->
-            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding OpenPaymentWindowCommand}" FontFamily="Comic Sans MS" FontWeight="Bold" Background="#FF7B11FA"/>
+            <Button Content="Купити" Style="{StaticResource RoundedButtonStyle}" Command="{Binding OpenPaymentWindowCommand}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>

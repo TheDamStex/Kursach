@@ -19,7 +19,7 @@
                 AutoReverse="True"
                 RepeatBehavior="Forever" />
 
-        <!-- Стиль для TextBox с закругленными углами -->
+        <!-- Стиль для TextBox із закругленими кутами -->
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
             <Setter Property="Width" Value="250"/>
             <Setter Property="Height" Value="40"/>
@@ -50,7 +50,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Стиль для PasswordBox с закругленными углами -->
+        <!-- Стиль для PasswordBox із закругленими кутами -->
         <Style x:Key="RoundedPasswordBoxStyle" TargetType="PasswordBox">
             <Setter Property="Width" Value="250"/>
             <Setter Property="Height" Value="40"/>
@@ -81,7 +81,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Стиль для кнопки с закругленными углами и наведением -->
+        <!-- Стиль для кнопки із закругленими кутами та наведенням -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
             <Setter Property="FontFamily" Value="Arial Black"/>
             <Setter Property="Width" Value="116"/>
@@ -115,7 +115,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Анимация для текста "Авторизація" -->
+        <!-- Анімація для тексту "Створення" -->
         <Storyboard x:Key="TextColorAnimation">
             <ColorAnimation 
                 Storyboard.TargetName="HeaderTextBlock" 
@@ -143,7 +143,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Зображення -->
-                <Image Source="D:\kursach\login.png" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <Image Source="/Content\login.png" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
                 <!-- Поле логіна -->
                 <TextBox x:Name="LoginTextBox"
@@ -173,7 +173,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Зображення -->
-                <Image Source="D:\kursach\password.png" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-12,0,0" />
+                <Image Source="/Content\password.png" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-12,0,0" />
 
                 <!-- Поле пароля -->
                 <PasswordBox x:Name="PasswordBox" 
@@ -194,7 +194,7 @@
             <Button Content="Увійти" 
                     Command="{Binding LoginCommand}" 
                     Width="116" Height="30" FontFamily="Comic Sans MS" 
-                    Style="{StaticResource RoundedButtonStyle}" FontWeight="Bold" Background="#FF7B11FA"/>
+                    Style="{StaticResource RoundedButtonStyle}" FontWeight="Bold"/>
 
             <!-- Кнопка входа -->
         </StackPanel>

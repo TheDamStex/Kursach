@@ -42,7 +42,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView Name="PurchaseHistoryListView" Margin="0,10" FontFamily="Comic Sans MS"
+            <ListView Name="PurchaseHistoryListView" ItemsSource="{Binding UserTickets}" Margin="0,10" FontFamily="Comic Sans MS"
                       HorizontalAlignment="Stretch" Width="570">
                 <ListView.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">

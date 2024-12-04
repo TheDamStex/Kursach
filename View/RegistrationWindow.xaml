@@ -136,7 +136,7 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="D:\kursach\login.png" Width="42" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="34,0,0,0"/>
+                <Image Source="/Content\login.png" Width="42" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="34,0,0,0"/>
                 <TextBox x:Name="LoginTextBox" Style="{StaticResource RoundedTextBoxStyle}" 
              FontFamily="Comic Sans MS" Background="#FF8B46B4" Foreground="Black"
              VerticalContentAlignment="Center"
@@ -163,7 +163,7 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="D:\kursach\password.png" Width="30" Height="30" Margin="36,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                <Image Source="/Content\password.png" Width="30" Height="30" Margin="36,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
                 <PasswordBox x:Name="PasswordBox1" Style="{StaticResource RoundedPasswordBoxStyle}" 
                  FontFamily="Comic Sans MS" Background="White" Foreground="Black"
                  VerticalContentAlignment="Center"
@@ -181,7 +181,7 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="D:\kursach\password.png" Width="40" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="36,0,0,0"/>
+                <Image Source="/Content\password.png" Width="40" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="36,0,0,0"/>
                 <PasswordBox x:Name="PasswordBox2" Style="{StaticResource RoundedPasswordBoxStyle}" 
                  FontFamily="Comic Sans MS" Background="White" Foreground="Black"
                  VerticalContentAlignment="Center"
@@ -197,7 +197,7 @@
             <Button Content="Зареєструватися" 
                     Command="{Binding RegisterCommand}" 
                     IsEnabled="{Binding CanRegister}"
-                    Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Width="188" Background="#FF7B11FA"/>
+                    Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Width="188"/>
         </StackPanel>
     </Grid>
 </Window>

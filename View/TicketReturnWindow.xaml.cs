@@ -15,17 +15,17 @@ using System.Windows.Shapes;
 namespace Kursach.View
 {
     /// <summary>
-    /// Логика взаимодействия для TicketReturnWindow.xaml
+    /// Логіка взаємодії для вікна повернення квитка (TicketReturnWindow.xaml)
     /// </summary>
     public partial class TicketReturnWindow : Window
     {
-
+        // Конструктор вікна повернення квитка
         public TicketReturnWindow()
         {
             InitializeComponent();
-        }
 
- 
-        
+            // Прив'язка даних для вікна повернення квитка через ViewModel (TicketReturnViewModel)
+            DataContext = new TicketReturnViewModel();
+        }
     }
 }

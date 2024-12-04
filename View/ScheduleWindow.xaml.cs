@@ -15,18 +15,17 @@ using System.Windows.Shapes;
 namespace Kursach.View
 {
     /// <summary>
-    /// Логика взаимодействия для ScheduleWindow.xaml
+    /// Логіка взаємодії для вікна розкладу (ScheduleWindow.xaml)
     /// </summary>
     public partial class ScheduleWindow : Window
     {
+        // Конструктор вікна розкладу
         public ScheduleWindow()
         {
             InitializeComponent();
-            DataContext = new TicketViewViewModel();
 
+            // Прив'язка даних для вікна розкладу через ViewModel (TicketViewViewModel)
+            DataContext = new TicketViewViewModel();
         }
     }
 }
-
-
-

@@ -63,7 +63,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-
+    
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
             <TextBlock Text="Повернення квитка" Style="{StaticResource HeaderTextStyle}" FontFamily="Magneto" FontSize="24" HorizontalAlignment="Center">
@@ -75,19 +75,25 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <!-- Комбобокс з темно-блакитним фоном -->
-            <ComboBox Name="TicketComboBox" Background="#FF9246B4" BorderBrush="#6A0DAD" Height="29" Foreground="#FF8B46B4" FontFamily="Comic Sans MS" FontWeight="Bold">
-                <ComboBoxItem Content="Option 1">
-                    <ComboBoxItem.BorderBrush>
-                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.MenuHighlightColorKey}}"/>
-                    </ComboBoxItem.BorderBrush>
-                </ComboBoxItem>
-                <ComboBoxItem Content="Option 2"/>
-                <ComboBoxItem Content="Option 3"/>
+            <!-- Комбобокс с привязкой к списку билетов -->
+            <ComboBox Name="TicketComboBox" ItemsSource="{Binding UserTickets}" SelectedItem="{Binding SelectedTicket}" 
+          Background="#FF9246B4" BorderBrush="#6A0DAD" Height="29" Foreground="White" FontFamily="Comic Sans MS" FontWeight="Bold">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding FlightNumber}" FontWeight="Bold" Margin="5,0"/>
+                            <TextBlock Text=" | " FontWeight="Bold" />
+                            <TextBlock Text="{Binding Destination}" Margin="5,0"/>
+                            <TextBlock Text=" | " FontWeight="Bold" />
+                            <TextBlock Text="{Binding Price, StringFormat={}{0}₴}" Margin="5,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <!-- Кнопка з закругленими кутами -->
-            <Button Content="Повернути" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Background="#FF7B11FA"/>
+            <!-- Кнопка с привязкой к команде -->
+            <Button Content="Повернути" Style="{StaticResource RoundedButtonStyle}" Command="{Binding ReturnTicketCommand}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
+
 </Window>

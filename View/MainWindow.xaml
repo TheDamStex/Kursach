@@ -7,19 +7,24 @@
         Title="Каса автовокзалу" Height="450" Width="700"
         Background="{StaticResource BackgroundGradient}"
         DataContext="{Binding MainWindowVievModel}">
-    <Window.Resources>
-        <ColorAnimation x:Key="ColorAnimation"
-                Duration="0:0:2"
-                From="White"
-                To="#002366"
-                AutoReverse="True"
-                RepeatBehavior="Forever" />
 
+    <!-- Ресурси вікна -->
+    <Window.Resources>
+        <!-- Анімація зміни кольору -->
+        <ColorAnimation x:Key="ColorAnimation"
+                        Duration="0:0:2"
+                        From="White"
+                        To="#002366"
+                        AutoReverse="True"
+                        RepeatBehavior="Forever" />
+
+        <!-- Градієнт для фону вікна -->
         <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="White" Offset="0" />
             <GradientStop Color="#002366" Offset="1" />
         </LinearGradientBrush>
-        <!-- Стиль для кнопок с закругленными углами -->
+
+        <!-- Стиль для кнопок з округленими кутами -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
             <Setter Property="FontFamily" Value="Arial Black"/>
             <Setter Property="Width" Value="180"/>
@@ -30,7 +35,8 @@
             <Setter Property="BorderBrush" Value="#FF9B5FCE"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="10,0"/>
-            <!-- Изменяем шаблон кнопки для закругления углов -->
+
+            <!-- Округлення кутів кнопки -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -46,7 +52,8 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <!-- Добавляем поведение при наведении (MouseOver) -->
+
+            <!-- Поведінка при наведенні (MouseOver) -->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FF9B5FCE"/>
@@ -56,40 +63,42 @@
         </Style>
     </Window.Resources>
 
+    <!-- Основний вміст вікна -->
     <Grid Margin="0,0,0,-6" Background="{StaticResource BackgroundGradient}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="113"/>
+            <RowDefinition Height="Auto" MinHeight="141"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Width="292">
-
+        <!-- Анімація для заголовку -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,48,0,10" Width="292">
             <StackPanel.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
                     <BeginStoryboard>
                         <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                            <!-- Анімація першого градіентного кольору -->
+                            <!-- Анімація для першого кольору градієнту -->
                             <DoubleAnimation Storyboard.TargetName="GradientStop1"
-                                     Storyboard.TargetProperty="Offset"
-                                     From="0.0" To="1.0" Duration="0:0:3"/>
-                            <!-- Анімація другого градіентного кольору -->
+                                             Storyboard.TargetProperty="Offset"
+                                             From="0.0" To="1.0" Duration="0:0:3"/>
+                            <!-- Анімація для другого кольору градієнту -->
                             <DoubleAnimation Storyboard.TargetName="GradientStop2"
-                                     Storyboard.TargetProperty="Offset"
-                                     From="0.5" To="1.5" Duration="0:0:3"/>
-                            <!-- Анімація третього градіентного кольору -->
+                                             Storyboard.TargetProperty="Offset"
+                                             From="0.5" To="1.5" Duration="0:0:3"/>
+                            <!-- Анімація для третього кольору градієнту -->
                             <DoubleAnimation Storyboard.TargetName="GradientStop3"
-                                     Storyboard.TargetProperty="Offset"
-                                     From="1.0" To="2.0" Duration="0:0:3"/>
+                                             Storyboard.TargetProperty="Offset"
+                                             From="1.0" To="2.0" Duration="0:0:3"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
             </StackPanel.Triggers>
+
+            <!-- Текст "BusBuy" з анімацією -->
             <TextBlock x:Name="AnimatedTextBlock"
-               FontFamily="Magneto"
-               Text="BusBuy"
-               FontSize="50" FontWeight="Bold" Height="74" Width="204" RenderTransformOrigin="0.641,0.434"
-               >
+                      FontFamily="Magneto"
+                      Text="BusBuy"
+                      FontSize="50" FontWeight="Bold" Height="65" Width="205" RenderTransformOrigin="0.641,0.434">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -102,7 +111,6 @@
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Offset="0.0" Color="White" x:Name="GradientStop1"/>
                         <!-- Білий -->
-                        <!-- Білий -->
                         <GradientStop Offset="0.5" Color="#00008B" x:Name="GradientStop2"/>
                         <!-- Темно-синій -->
                         <GradientStop Offset="1.0" Color="White" x:Name="GradientStop3"/>
@@ -111,14 +119,15 @@
             </TextBlock>
         </StackPanel>
 
+        <!-- Кнопки для навігації -->
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="182" Width="600">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Background="#FF7B11FA"/>
+                <Button Content="Розклад автобусів" Command="{Binding OpenScheduleWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Background="#FF7B11FA"/>
-                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Background="#FF7B11FA"/>
-                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold" Background="#FF7B11FA"/>
+                <Button Content="Доступні квитки" Command="{Binding OpenTicketViewWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+                <Button Content="Історія покупок" Command="{Binding OpenPurchaseHistoryWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+                <Button Content="Повернення квитка" Command="{Binding OpenTicketReturnWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold"/>
             </StackPanel>
             <Border Margin="0,10" Height="2">
                 <Border.Background>
@@ -130,12 +139,13 @@
             </Border>
         </StackPanel>
 
+        <!-- Кнопки для авторизації та реєстрації -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,20" Width="400">
             <Button Content="Авторизація" Command="{Binding OpenLoginWindowCommand}" Style="{StaticResource RoundedButtonStyle}" FontFamily="Comic Sans MS" FontWeight="Bold">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
-                        <GradientStop Color="#FF7B11FA" Offset="1.0"/>
+                        <GradientStop Color="#FF9B5FCE" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.Foreground>
@@ -146,7 +156,7 @@
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF5B2E91" Offset="0.0"/>
-                        <GradientStop Color="#FF7B11FA" Offset="1.0"/>
+                        <GradientStop Color="#FF9B5FCE" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.Foreground>
@@ -154,7 +164,9 @@
                 </Button.Foreground>
             </Button>
         </StackPanel>
-        <Image Source="D:\kursach\bus1.png" 
+
+        <!-- Логотип автобуса -->
+        <Image Source="/Content\bus1.png" 
                HorizontalAlignment="Left" 
                VerticalAlignment="Top" 
                Margin="-8,-21,0,0" 
@@ -170,20 +182,5 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBlock HorizontalAlignment="Center" Margin="0,83,0,0" TextWrapping="Wrap" Text="Вітаємо:)" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="82" Grid.RowSpan="2" Width="166">
-            <TextBlock.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFCB5AF8"/>
-                    <GradientStop Color="#FFB947F5" Offset="1"/>
-                    <GradientStop Color="#FF5E4DEC" Offset="0.506"/>
-                    <GradientStop Color="#FF6182F3"/>
-                    <GradientStop Color="#FFEF56FA"/>
-                    <GradientStop Color="#FF2F24B2"/>
-                    <GradientStop Color="#FFCF69FD"/>
-                    <GradientStop Color="#FE4C30BF"/>
-                    <GradientStop Color="#FE8F4DDE" Offset="0.268"/>
-                </LinearGradientBrush>
-            </TextBlock.Foreground>
-        </TextBlock>
     </Grid>
 </Window>

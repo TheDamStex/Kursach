@@ -1,22 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using Kursach.ViewModel;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Kursach.View
 {
     public partial class PurchaseHistoryWindow : Window
     {
-        private List<Purchase> purchases;
-
-        public PurchaseHistoryWindow(List<Purchase> purchases)
+        // Конструктор вікна історії покупок
+        public PurchaseHistoryWindow()
         {
             InitializeComponent();
-            this.purchases = purchases;
-            LoadPurchaseHistory();
-        }
 
-        private void LoadPurchaseHistory()
-        {
-            PurchaseHistoryListView.ItemsSource = purchases;
+            // Прив'язка даних до вікна (DataContext) з використанням ViewModel
+            this.DataContext = new PurchaseHistoryViewModel();
         }
     }
 }

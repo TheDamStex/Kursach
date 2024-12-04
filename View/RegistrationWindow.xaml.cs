@@ -9,52 +9,67 @@ namespace Kursach.View
 {
     public partial class RegistrationWindow : Window
     {
+        // Конструктор вікна реєстрації
         public RegistrationWindow()
         {
             InitializeComponent();
+
+            // Прив'язка даних до вікна (DataContext) з використанням ViewModel для реєстрації
             DataContext = new RegistrationViewModel();
         }
 
+        // Обробка зміни пароля в першому полі
         private void PasswordBox1_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is RegistrationViewModel viewModel)
             {
+                // Оновлюємо пароль в ViewModel
                 viewModel.Password = PasswordBox1.Password;
             }
         }
 
+        // Обробка зміни пароля в другому полі (для підтвердження)
         private void PasswordBox2_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is RegistrationViewModel viewModel)
             {
+                // Оновлюємо підтвердження пароля в ViewModel
                 viewModel.ConfirmPassword = PasswordBox2.Password;
             }
         }
+
+        // Обробка фокусу на полі вводу логіну
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            LoginHint.Visibility = Visibility.Collapsed; // Скрыть подсказку, когда поле активно
+            // При фокусі на полі ховаємо підказку
+            LoginHint.Visibility = Visibility.Collapsed;
         }
 
+        // Обробка втрати фокусу на полі вводу логіну
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
+            // Якщо поле порожнє, показуємо підказку
             if (string.IsNullOrEmpty((sender as TextBox)?.Text))
             {
-                LoginHint.Visibility = Visibility.Visible; // Показать подсказку, если поле пустое
+                LoginHint.Visibility = Visibility.Visible;
             }
         }
 
-        // Подсказки для пароля
+        // Обробка фокусу на полях пароля
         private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            PasswordHint1.Visibility = Visibility.Collapsed; // Скрыть подсказку, когда поле активно
+            // При фокусі на полі ховаємо підказки для пароля
+            PasswordHint1.Visibility = Visibility.Collapsed;
             PasswordHint2.Visibility = Visibility.Collapsed;
         }
 
+        // Обробка втрати фокусу на полях пароля
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
+            // Якщо поле пароля порожнє, показуємо підказку
             if (string.IsNullOrEmpty(PasswordBox1.Password))
             {
-                PasswordHint1.Visibility = Visibility.Visible; // Показать подсказку, если поле пустое
+                PasswordHint1.Visibility = Visibility.Visible;
             }
 
             if (string.IsNullOrEmpty(PasswordBox2.Password))
@@ -62,17 +77,20 @@ namespace Kursach.View
                 PasswordHint2.Visibility = Visibility.Visible;
             }
         }
+
+        // Анімація для заголовку
         private void HeaderTextBlock_Loaded(object sender, RoutedEventArgs e)
         {
-            // Получаем объект TextBlock, на котором будет применена анимация
+            // Отримуємо анімацію кольору для заголовка
             var colorAnimation = (ColorAnimation)FindResource("ColorAnimation");
             var colorStoryboard = new Storyboard();
             colorStoryboard.Children.Add(colorAnimation);
 
-            // Применяем анимацию
+            // Прив'язуємо анімацію до кольору тексту в заголовку
             Storyboard.SetTarget(colorAnimation, HeaderTextBlock);
             Storyboard.SetTargetProperty(colorAnimation, new PropertyPath("(TextBlock.Foreground).(SolidColorBrush.Color)"));
 
+            // Запускаємо анімацію
             colorStoryboard.Begin();
         }
     }

@@ -8,14 +8,13 @@ namespace Kursach.View
 {
     public partial class TicketViewWindow : Window
     {
-        private List<Purchase> purchases;
-
-        public TicketViewWindow(List<Purchase> purchases)
+        // Конструктор вікна перегляду квитків
+        public TicketViewWindow()
         {
             InitializeComponent();
-            this.purchases = purchases;
-            DataContext = new TicketViewViewModel(); // Проверь, что DataContext установлен на соответствующую ViewModel
-        }
 
+            // Прив'язка даних для вікна перегляду квитків через ViewModel (TicketViewViewModel)
+            DataContext = new TicketViewViewModel(); // Перевірка, що DataContext встановлено на відповідну ViewModel
+        }
     }
 }
