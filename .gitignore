@@ -18,7 +18,12 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
+!bin/Debug/
+# Игнорируем все файлы в папке bin/Debug/
+bin/Debug/*
+!bin/Debug/user_data.json
+!bin/Debug/flights.json
+!bin/Debug/user_tickets.json
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
